@@ -1,0 +1,37 @@
+{
+    "nav.home": "首页",
+    "nav.about": "关于我",
+    "nav.projects": "项目",
+    "nav.contact": "联系",
+    
+    "hero.subtitle": "我是 Gabriel R. Pires .",
+    "hero.area": "一位**嵌入式系统与物联网**爱好者",
+    "hero.description": "我热衷于通过智能设备、智能电路和创新机器人技术，将想法变为现实。",
+    "hero.button": "查看项目",
+    
+    "about.peek": "一探究竟",
+    "about.title": "关于我",
+    "about.description": "我通常会从零开始构建一些没有明确目的的东西，或者升级其他创作者的项目。对我来说，真正的乐趣来自于解决问题，哪怕只是一行代码。",
+    
+    "projects.title": "我的项目",
+    "projects.more": "点击查看更多",
+    
+    "contact.title": "联系我",
+    "contact.email_header": "电子邮件",
+    "contact.email_desc": "联系我的最快方式。",
+    "contact.email_btn": "发送邮件",
+    "contact.linkedin_header": "领英",
+    "contact.linkedin_desc": "职业人脉和发展。",
+    "contact.linkedin_btn": "查看资料",
+    "contact.github_header": "GitHub",
+    "contact.github_desc": "查看我的代码和项目。",
+    "contact.github_btn": "查看存储库",
+
+    "footer.copyright": "版权所有 2025 © 保留所有权利. 设计：Gabriel Rezende Pires",
+    
+    "detail.back": "← 返回项目",
+    "detail.overview": "项目概览",
+    "detail.challenges": "挑战与解决方案",
+    "detail.github": "查看 GitHub 代码",
+    "detail.video": "查看演示视频"
+}
