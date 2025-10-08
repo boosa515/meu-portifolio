@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio - Gabriel R. Pires</title>
+    
+    <link rel="stylesheet" href="main.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <div id="scroll-profile" class="scroll-profile hidden">
+        <img id="scroll-profile-img" src="Imagens/F1.png" alt="Perfil"> 
+    </div>
+
+    <header class="main-header transparent-header">
+        
+        <nav class="centered-nav">
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" data-i18n="nav.about">Sobre Mim</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
+                <li><a href="#contatos" data-i18n="nav.contact">Contato</a></li> 
+            </ul>
+        </nav>
+        
+        <div class="header-controls">
+            <button id="theme-toggle" class="control-btn" title="Mudar Tema">
+                <i class="fas fa-sun"></i> 
+            </button>
+
+            <div class="language-selector">
+                <div class="language-selector">
+                <select id="language-switcher" class="control-select">
+                    <option value="pt">PT</option>
+                    <option value="en">EN</option>
+                    <option value="zh">ZH</option>
+                    <option value="ja">JA</option>
+                </select>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 class="animatable-title" data-i18n="hero.subtitle">私は Gabriel R. Pires .</h1> 
+            <h2 data-i18n="hero.area">Um entusiasta de **Embedded Systems e IoT**</h2>
+            <p data-i18n="hero.description">Eu prospero em dar vida a ideias através de dispositivos inteligentes, circuitos inovadores e robótica.</p>
+            <a href="#projects" class="btn primary-btn" data-i18n="hero.button">THINGS I'VE BUILT</a>
+        </div>
+        <div class="hero-image-container">
+            <img id="profile-hero-img" src="Imagens/F1.png" alt="Foto de Perfil" class="profile-pic"> 
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <p class="subtitle" data-i18n="about.peek">TAKE A PEEK</p>
+            <h2 class="animatable-title" data-i18n="about.title">SOBRE MIM</h2> 
+            <p class="description" data-i18n="about.description">Normalmente eu construo coisas sem propósito, do zero ou atualizando projetos de outros criadores. Mas o prazer real para mim vem da solução de um problema, mesmo com apenas uma linha de código.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2 class="animatable-title" data-i18n="projects.title">MY PROJECTs</h2> 
+        </section>
+    
+    <section id="contatos" class="contacts-section">
+        <h2 class="animatable-title" data-i18n="contact.title">FALE COMIGO</h2>
+        <div class="contacts-grid">
+            
+            <div class="contact-card">
+                <i class="fas fa-envelope icon"></i>
+                <h3 data-i18n="contact.email_header">E-mail</h3>
+                <p data-i18n="contact.email_desc">O jeito mais rápido de falar.</p>
+                <a href="mailto:rezendepiresgabriel@gmail.com?subject=Contato%20Portfólio" class="contact-btn" data-i18n="contact.email_btn">Enviar Email</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-linkedin-in icon"></i>
+                <h3 data-i18n="contact.linkedin_header">LinkedIn</h3>
+                <p data-i18n="contact.linkedin_desc">Conexão profissional e carreira.</p>
+                <a href="https://www.linkedin.com/in/grp-0892ret/" target="_blank" class="contact-btn" data-i18n="contact.linkedin_btn">Acessar Perfil</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-github icon"></i>
+                <h3 data-i18n="contact.github_header">GitHub</h3>
+                <p data-i18n="contact.github_desc">Veja meu código e projetos.</p>
+                <a href="https://github.com/boosa515" target="_blank" class="contact-btn" data-i18n="contact.github_btn">Ver Repositórios</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="main-footer">
+        <div class="social-links">
+            </div>
+        <p data-i18n="footer.copyright">Copyright 2025 © All rights Reserved. Design by Gabriel Rezende Pires</p>
+    </footer>
+
+    <script src="project-data.js"></script>
+    <script src="main.js" type="module"></script> 
+</body>
+</html>

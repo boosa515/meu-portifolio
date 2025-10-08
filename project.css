@@ -1,0 +1,82 @@
+/* --- ESTILOS ESPECÍFICOS DA PÁGINA DE DETALHES DO PROJETO --- */
+
+.project-detail-section {
+    max-width: 900px;
+    padding-top: 150px; /* Mais espaço no topo para o cabeçalho fixo */
+    text-align: left;
+}
+
+.project-detail-section .subtitle a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.3s;
+}
+.project-detail-section .subtitle a:hover {
+    opacity: 0.8;
+}
+
+#project-title {
+    font-size: 3.5rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.project-meta {
+    font-size: 0.9rem;
+    color: var(--link-color-dark);
+    margin-bottom: 30px;
+}
+
+.project-meta span {
+    margin-right: 20px;
+}
+
+.project-detail-section .main-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    transition: transform 0.3s;
+}
+
+.project-detail-section .project-content h2 {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-align: left; /* Títulos menores alinhados à esquerda */
+    text-transform: none;
+}
+
+.project-detail-section .project-content p, 
+.project-detail-section .project-content ul {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.project-detail-section .project-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.project-detail-section .project-content ul li {
+    /* Ícone de lista para o tema escuro */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23b8e71a"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>') no-repeat left center;
+    background-size: 16px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+
+/* Sobrescreve a cor do ícone no tema claro */
+body.light-theme .project-detail-section .project-content ul li {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%239c1ae7"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>');
+}
+
+/* Garante que os botões de link de projeto fiquem alinhados */
+.project-content a.btn {
+    margin-right: 15px;
+    margin-top: 0;
+}

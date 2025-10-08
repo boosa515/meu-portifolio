@@ -1,0 +1,37 @@
+{
+    "nav.home": "Home",
+    "nav.about": "About Me",
+    "nav.projects": "Projects",
+    "nav.contact": "Contact",
+    
+    "hero.subtitle": "I'm Gabriel R. Pires .",
+    "hero.area": "A passionate enthusiast of **Embedded Systems and IoT**",
+    "hero.description": "I thrive on bringing ideas to life through smart devices, intelligent circuits, and innovative robotics.",
+    "hero.button": "THINGS I'VE BUILT",
+    
+    "about.peek": "TAKE A PEEK",
+    "about.title": "ABOUT ME",
+    "about.description": "I normally build things without purpose, from the ground up or upgrading other creators' projects. But the real enjoyment for me comes from solving a problem, even with one line of code.",
+    
+    "projects.title": "MY PROJECTs",
+    "projects.more": "Click for More",
+    
+    "contact.title": "CONTACT ME",
+    "contact.email_header": "Email",
+    "contact.email_desc": "The fastest way to reach me.",
+    "contact.email_btn": "Send Email",
+    "contact.linkedin_header": "LinkedIn",
+    "contact.linkedin_desc": "Professional connection and career.",
+    "contact.linkedin_btn": "View Profile",
+    "contact.github_header": "GitHub",
+    "contact.github_desc": "Check out my code and projects.",
+    "contact.github_btn": "View Repositories",
+
+    "footer.copyright": "Copyright 2025 © All rights Reserved. Design by Gabriel Rezende Pires",
+    
+    "detail.back": "← BACK TO PROJECTS",
+    "detail.overview": "Project Overview",
+    "detail.challenges": "Challenges and Solutions",
+    "detail.github": "VIEW CODE ON GITHUB",
+    "detail.video": "VIEW DEMO VIDEO"
+}
