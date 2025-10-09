@@ -1,19 +1,31 @@
-// i18n.js
+// ==============================
+// Sistema de internacionalização 
+// ==============================
 
-import { loadProjectDetail } from './projectLoader.js'; 
-import { animateTitles, wrapTitleLetters } from './utils.js'; // Continuam importadas, mas não usadas
+// Importa função para carregar detalhes de projetos quando o idioma muda
+import { loadProjectDetail } from './projectLoader.js';
 
-// VARIÁVEIS GLOBAIS DE MÓDULO
-let translations = {}; 
-export let currentLang = 'pt'; 
+// Importa funções utilitárias de animação de títulos (não usadas aqui, mas mantidas)
+import { animateTitles, wrapTitleLetters } from './utils.js';
 
-// Funções Internas
+// ===========================
+// VARIÁVEIS GLOBAIS DO MÓDULO
+// ===========================
+
+let translations = {}; // Objeto que armazenará todas as traduções carregadas do arquivo JSON
+export let currentLang = 'pt'; // Idioma padrão
+
+// =====================================================
+// FUNÇÃO INTERNA: Busca e carrega o arquivo de tradução
+// =====================================================
+
 async function fetchTranslations(lang) {
     try {
-        const response = await fetch(`locales/${lang}.json`);
-        if (!response.ok) throw new Error('Translation file not found');
-        translations = await response.json();
+        const response = await fetch(`locales/${lang}.json`);  // Faz o download do arquivo JSON do idioma solicitado
+        if (!response.ok) throw new Error('Translation file not found');  // Caso o arquivo não seja encontrado, lança uma exceção
+        translations = await response.json(); // Converte o conteúdo do arquivo JSON para objeto JavaScript
         return true;
+
     } catch (error) {
         console.error(`Erro ao carregar tradução para ${lang}. Usando PT como fallback.`, error);
         if (lang !== 'pt') {
@@ -23,56 +35,66 @@ async function fetchTranslations(lang) {
     }
 }
 
+// ===============================================
+// FUNÇÃO EXPORTADA: Aplica as traduções na página
+// ===============================================
+
 export function applyTranslations() {
+
     document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        const translation = translations[key];
-        
+        const key = element.getAttribute('data-i18n');  // Pega a chave de tradução (ex: "nav.home", "hero.subtitle")
+        const translation = translations[key]; // Busca o texto traduzido no objeto 'translations'
         if (translation) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') { // Caso o elemento seja um campo de texto, altera o placeholder
                 element.placeholder = translation;
             } else {
-                // Aplica tradução, agora sem wrapper de letras!
+                // Insere o texto traduzido no elemento
+                // O regex troca **texto** por <strong>texto</strong> para aplicar negrito
                 element.innerHTML = translation.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             }
         }
     });
-    
-    // CHAMADAS DE ANIMAÇÃO REMOVIDAS.
+
 }
 
-// Retorna o texto localizado para dados dinâmicos
+// ==================================================================
+// FUNÇÃO EXPORTADA: Retorna texto traduzido para elementos dinâmicos
+// ==================================================================
+
 export function getLocalizedText(textObject) {
-    return textObject[currentLang] || textObject['pt'] || 'Texto não disponível';
+    return textObject[currentLang] || textObject['pt'] || 'Texto não disponível'; // Tenta retornar o texto do idioma atual. Se não existir, tenta português, caso contrário, retorna um texto padrão de erro
 }
 
-// Função Exportada (Troca de Idioma e Inicialização)
+// ================================================================
+// FUNÇÃO EXPORTADA: Troca o idioma e atualiza o conteúdo da página
+// ================================================================
+
 export async function changeLanguage(newLang) {
-    currentLang = newLang; // Salva o idioma
-    localStorage.setItem('lang', newLang);
-    
-    const success = await fetchTranslations(newLang);
+    currentLang = newLang; // Atualiza a variável global com o novo idioma
+    localStorage.setItem('lang', newLang); // Salva o idioma selecionado no armazenamento local do navegador
+    const success = await fetchTranslations(newLang); // Tenta carregar as traduções do novo idioma
+
     if (success) {
-        applyTranslations(); 
+        applyTranslations(); // Atualiza todos os textos da página
     }
-    
-    loadProjectDetail(); 
+    loadProjectDetail(); // Recarrega os detalhes dos projetos
 }
+
+// ================================
+// FUNÇÃO EXPORTADA: Inicializa o sistema de idioma ao carregar o site
+// ================================
 
 export function initLanguage() {
-    const languageSwitcher = document.getElementById('language-switcher');
+    const languageSwitcher = document.getElementById('language-switcher'); // Seleciona o <select> do cabeçalho responsável pela troca de idioma
+
     
-    // 1. Define a linguagem inicial
-    const initialLang = localStorage.getItem('lang') || 'pt';
-    if (languageSwitcher) {
-        languageSwitcher.value = initialLang;
-        // 2. Adiciona o listener para troca
-        languageSwitcher.addEventListener('change', (event) => {
-            changeLanguage(event.target.value);
+    const initialLang = localStorage.getItem('lang') || 'pt'; // Define o idioma inicial — tenta pegar do localStorage, senão usa português
+
+    if (languageSwitcher) { // Se o seletor de idioma existe na página
+        languageSwitcher.value = initialLang; // Define o valor atual do <select> para o idioma salvo
+        languageSwitcher.addEventListener('change', (event) => { // Adiciona o evento para detectar quando o usuário muda o idioma
+            changeLanguage(event.target.value); // Quando o idioma muda, chama a função de troca
         });
     }
-    
-    // 3. Inicia o carregamento 
-    changeLanguage(initialLang);
-    
+    changeLanguage(initialLang); // Carrega o idioma inicial ao abrir a página
 }

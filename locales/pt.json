@@ -4,14 +4,14 @@
     "nav.projects": "Projetos",
     "nav.contact": "Contato",
     
-    "hero.subtitle": "Eu sou Gabriel R. Pires .",
-    "hero.area": "Um entusiasta de **Embedded Systems e IoT**",
-    "hero.description": "Eu prospero em dar vida a ideias através de dispositivos inteligentes, circuitos inovadores e robótica.",
+    "hero.subtitle": "Gabriel R. Pires .",
+    "hero.area": "Engenheiro da Computação",
+    "hero.description": "Programador full stack em formação, com foco em desenvolvimento web e integração entre hardware e software utilizando Arduino, Raspberry Pi e microcontroladores.",
     "hero.button": "THINGS I'VE BUILT",
     
     "about.peek": "TAKE A PEEK",
     "about.title": "SOBRE MIM",
-    "about.description": "Normalmente eu construo coisas sem propósito, do zero ou atualizando projetos de outros criadores. Mas o prazer real para mim vem da solução de um problema, mesmo com apenas uma linha de código.",
+    "about.description": "Me chamo Gabriel e atualmente curso Engenharia da Computação. Sou apaixonado por tecnologia e gosto de transformar ideias em projetos reais. Trabalho com desenvolvimento web e também com eletrônica, explorando o uso de Arduino, Raspberry Pi e microcontroladores para criar soluções que unem software e hardware. Gosto de entender como as coisas funcionam por dentro e buscar maneiras criativas de melhorar sistemas e processos. Tenho curiosidade por novas tecnologias, segurança da informação e automação, áreas que me motivam a aprender continuamente. Atualmente, estou aprimorando minhas habilidades em HTML, CSS, JavaScript e frameworks modernos, com o objetivo de me tornar um desenvolvedor full stack completo. Acredito que o aprendizado é um processo constante, e busco sempre evoluir através de projetos práticos, desafios e colaboração com outras pessoas da área. Fora da programação, gosto de explorar ideias, testar conceitos e aprender sobre diferentes formas de aplicar a tecnologia para resolver problemas do dia a dia.",
     
     "projects.title": "MEUS PROJETOS",
     "projects.more": "Click for More",

@@ -1,83 +1,84 @@
-/* --- ESTILOS ESPECÍFICOS DA PÁGINA DE DETALHES DO PROJETO --- */
+/*======================================================
+    ESTILOS ESPECÍFICOS DA PÁGINA DE DETALHES DO PROJETO
+  ======================================================*/
 
-.project-detail-section {
-    max-width: 900px;
-    padding-top: 150px; /* Mais espaço no topo para o cabeçalho fixo */
-    text-align: left;
+.project-detail-section {     /*Container principal da seção de detalhes do projeto */
+    max-width: 900px;         /* Limita a largura máxima */
+    padding-top: 150px;       /* Cria espaço no topo (compensa o cabeçalho fixo da página) */
+    text-align: left;         /* Texto dentro da seção fique alinhado à esquerda */
 }
 
-.project-detail-section .subtitle a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 700;
-    transition: opacity 0.3s;
-}
-.project-detail-section .subtitle a:hover {
-    opacity: 0.8;
+.project-detail-section .subtitle a { /* --- LINKS NA SUBTÍTULO --- */
+    color: var(--primary-color);     /* Usa a cor primária do tema*/
+    text-decoration: none;           /* Remove o sublinhado dos links */
+    font-weight: 700;                /* Deixa o texto em negrito */
+    transition: opacity 0.3s;        /* Suaviza a transição da opacidade no hover */
 }
 
-#project-title {
-    font-size: 3.5rem;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.project-detail-section .subtitle a:hover { /* Efeito ao passar o mouse sobre o link */
+    opacity: 0.8;                           /* Diminui a opacidade */
 }
 
-.project-meta {
-    font-size: 0.9rem;
-    color: var(--link-color-dark);
-    margin-bottom: 30px;
+#project-title {                     /* --- TÍTULO PRINCIPAL DO PROJETO --- */
+    font-size: 3.5rem;               /* Tamanho grande */
+    margin-top: 20px;                /* Espaço acima do título */
+    margin-bottom: 20px;             /* Espaço abaixo do título */
 }
 
-.project-meta span {
-    margin-right: 20px;
+.project-meta {                      /* --- METADADOS DO PROJETO --- */
+    font-size: 0.9rem;               /* Tamanho menor */
+    color: var(--link-color-dark);   /* Usa cor definida pelo tema */
+    margin-bottom: 30px;             /* Espaço entre os metadados e o próximo bloco */
 }
 
-.project-detail-section .main-image {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    transition: transform 0.3s;
+.project-meta span {                 /* Cada item dentro de .project-meta (ex: Data | Categoria) */
+    margin-right: 20px;              /* Espaço lateral entre os metadados */
 }
 
-.project-detail-section .project-content h2 {
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 15px;
-    text-align: left; /* Títulos menores alinhados à esquerda */
-    text-transform: none;
+.project-detail-section .main-image {/* --- IMAGEM PRINCIPAL DO PROJETO --- */
+    width: 100%;                     /* A imagem ocupa toda a largura disponível */
+    max-height: 500px;               /* Limita a altura máxima*/
+    object-fit: cover;               /* Faz o recorte mantendo o centro visível */
+    border-radius: 8px;              /* Bordas levemente arredondadas */
+    margin-bottom: 40px;             /* Espaço inferior entre a imagem e o texto */
+    transition: transform 0.3s;      /* Efeito suave de zoom ou movimento */
 }
 
-.project-detail-section .project-content p, 
+.project-detail-section .project-content h2 { /* --- TÍTULOS SECUNDÁRIOS --- */
+    font-size: 2rem;                          /* Tamanho moderado para subtítulos */
+    margin-top: 40px;                         /* Espaço superior */
+    margin-bottom: 15px;                      /* Espaço inferior */
+    text-align: left;                         /* Alinhamento padrão à esquerda */
+    text-transform: none;                     /* Mantém o texto com a capitalização original */
+}
+
+/* --- PARÁGRAFOS E LISTAS DENTRO DO CONTEÚDO DO PROJETO --- */
+.project-detail-section .project-content p,
 .project-detail-section .project-content ul {
-    font-size: 1.1rem;
-    color: #bbb;
-    margin-bottom: 20px;
-    text-align: left;
+    font-size: 1.1rem;                   /* Tamanho levemente maior que o padrão */
+    color: #bbb;                       /* Cinza claro — combina com o fundo escuro */
+    margin-bottom: 20px;                 /* Espaço inferior */
+    text-align: left;                    /* Alinhamento uniforme */
 }
 
-.project-detail-section .project-content ul {
-    list-style-type: none;
-    padding-left: 0;
+.project-detail-section .project-content ul {/* Remove estilos padrão de listas */
+    list-style-type: none;                   /* Remove os marcadores padrão (bolinhas) */
+    padding-left: 0;                         /* Remove o recuo à esquerda */
 }
 
-
-.project-detail-section .project-content ul li {
-    /* Ícone de lista para o tema escuro */
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23b8e71a"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>') no-repeat left center;
-    background-size: 16px;
-    padding-left: 25px;
-    margin-bottom: 10px;
+.project-detail-section .project-content ul li { /* --- ESTILO PERSONALIZADO PARA OS ITENS DA LISTA (✔ Ícone SVG) --- */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23b8e71a"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>') /* Define o ícone da lista (em SVG embutido para não depender de arquivo externo) */
+                no-repeat left center;
+    background-size: 16px;           /* Define o tamanho do ícone */
+    padding-left: 25px;              /* Cria espaço para o ícone antes do texto */
+    margin-bottom: 10px;             /* Espaço entre os itens da lista */
 }
 
-/* Sobrescreve a cor do ícone no tema claro */
-body.light-theme .project-detail-section .project-content ul li {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%239c1ae7"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>');
+body.light-theme .project-detail-section .project-content ul li { /* --- VERSÃO PARA O TEMA CLARO --- */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%239c1ae7"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>'); /* Altera a cor do ícone ✔ para combinar com o tema claro */
 }
 
-/* Garante que os botões de link de projeto fiquem alinhados */
-.project-content a.btn {
-    margin-right: 15px;
-    margin-top: 0;
+.project-content a.btn {             /* --- BOTÕES DE AÇÃO --- */
+    margin-right: 15px;              /* Espaço lateral entre botões */
+    margin-top: 0;                   /* Remove espaçamento superior padrão */
 }

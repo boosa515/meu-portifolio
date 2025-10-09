@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Projeto | Gabriel R. Pires</title> 
-    
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="project.css">
-    
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define o comportamento responsivo para dispositivos móveis -->
+    <title>Detalhes do Projeto | Gabriel R. Pires</title>  <!-- Título exibido na aba do navegador -->
+    <link rel="stylesheet" href="main.css"> <!-- Importa o CSS principal do site -->
+    <link rel="stylesheet" href="project.css">  <!-- Importa o CSS específico para a página de detalhes de projeto -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    
-    <div id="scroll-profile" class="scroll-profile hidden">
+    <div id="scroll-profile" class="scroll-profile hidden"> <!-- Esta div aparece fixada quando o usuário rola a página -->
         <img id="scroll-profile-img" src="Imagens/F1.png" alt="Perfil"> 
     </div>
     
-    <header class="main-header transparent-header">
+    <header class="main-header transparent-header"> <!-- CABEÇALHO PRINCIPAL -->
         
         <nav class="centered-nav">
             <ul class="nav-links">
@@ -28,11 +26,12 @@
             </ul>
         </nav>
         
-        <div class="header-controls">
-            <button id="theme-toggle" class="control-btn" title="Mudar Tema">
-                <i class="fas fa-sun"></i> 
+        <div class="header-controls"> <!-- Controles no canto direito do cabeçalho -->
+            <button id="theme-toggle" class="control-btn" title="Mudar Tema">  <!-- Botão de alternância de tema -->
+                <i class="fas fa-sun"></i>  <!-- Ícone do sol -->
             </button>
-            <div class="language-selector">
+
+            <div class="language-selector"> <!-- Seletor de idioma -->
                 <select id="language-switcher" class="control-select">
                     <option value="pt">PT</option> 
                     <option value="en">EN</option>
@@ -43,13 +42,11 @@
         </div>
     </header>
 
-    <section id="project-detail" class="project-detail-section">
-        
-        <p>Carregando detalhes do projeto...</p>
-        
+    <section id="project-detail" class="project-detail-section"> <!-- SEÇÃO PRINCIPAL -->
+        <p>Carregando detalhes do projeto...</p>  <!-- Texto temporário exibido até o carregamento do conteúdo -->
     </section>
-
-    <footer class="main-footer">
+ 
+    <footer class="main-footer">  <!-- RODAPÉ -->
         <div class="social-links">
             <a href="https://www.instagram.com/ga_rpires/" target="_blank"><i class="fab fa-instagram"></i></a> 
             <a href="https://github.com/boosa515" target="_blank"><i class="fab fa-github"></i></a>
@@ -58,8 +55,8 @@
         </div>
         <p>Copyright 2025 © All rights Reserved. Design by Gabriel Rezende Pires</p>
     </footer>
-
-    <script src="project-data.js"></script> 
-    <script src="main.js" type="module"></script> 
+    
+    <script src="project-data.js"></script> <!-- Dados de todos os projetos -->
+    <script src="main.js" type="module"></script> <!-- Importa o arquivo principal -->
 </body>
 </html>
