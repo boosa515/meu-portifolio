@@ -8,6 +8,7 @@ const body = document.body;
 const heroImage = document.getElementById('profile-hero-img');
 const scrollProfileImg = document.getElementById('scroll-profile-img');
 
+
 // CONSTANTES
 const IMAGE_DARK = 'Imagens/F1.png';
 const IMAGE_LIGHT = 'Imagens/F2.png';

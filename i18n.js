@@ -78,4 +78,5 @@ export function initLanguage() {
     
     // 3. Inicia o carregamento (que chamará applyTranslations e loadProjectDetail)
     changeLanguage(initialLang);
+    
 }

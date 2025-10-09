@@ -84,4 +84,5 @@ export function loadProjectDetail() {
          wrapTitleLetters(newTitleElement);
          animateTitles();
     }
+    
 }

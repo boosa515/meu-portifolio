@@ -3,6 +3,7 @@
 const projectData = {
     // --- ID 1: Braço Robótico ---
     '1': {
+        
         // TÍTULO EM MÚLTIPLOS IDIOMAS
         title: {
             pt: 'Braço Robótico Autônomo com Visão Computacional',

@@ -57,6 +57,7 @@ export function animateTitles() {
     });
 }
 
+
 // Inicialização de Animações/Scroll (chamada em main.js)
 export function initAnimationsAndScroll() {
     // Aplicar a animação inicial nos títulos estáticos
