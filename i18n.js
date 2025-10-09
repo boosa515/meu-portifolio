@@ -1,7 +1,7 @@
 // i18n.js
 
-import { loadProjectDetail, loadProjectGrid } from './projectLoader.js'; 
-import { animateTitles, wrapTitleLetters } from './utils.js';
+import { loadProjectDetail } from './projectLoader.js'; 
+import { animateTitles, wrapTitleLetters } from './utils.js'; // Continuam importadas, mas não usadas
 
 // VARIÁVEIS GLOBAIS DE MÓDULO
 let translations = {}; 
@@ -16,7 +16,6 @@ async function fetchTranslations(lang) {
         return true;
     } catch (error) {
         console.error(`Erro ao carregar tradução para ${lang}. Usando PT como fallback.`, error);
-        // Tenta PT como fallback se o idioma principal falhar
         if (lang !== 'pt') {
             return fetchTranslations('pt');
         }
@@ -33,15 +32,13 @@ export function applyTranslations() {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translation;
             } else {
-                // Usa innerHTML para renderizar negritos (**)
+                // Aplica tradução, agora sem wrapper de letras!
                 element.innerHTML = translation.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             }
         }
     });
     
-    // Dispara a animação das letras APÓS a tradução ser aplicada
-    document.querySelectorAll('.animatable-title').forEach(wrapTitleLetters);
-    animateTitles();
+    // CHAMADAS DE ANIMAÇÃO REMOVIDAS.
 }
 
 // Retorna o texto localizado para dados dinâmicos
@@ -56,10 +53,9 @@ export async function changeLanguage(newLang) {
     
     const success = await fetchTranslations(newLang);
     if (success) {
-        applyTranslations(); // Aplica traduções estáticas
+        applyTranslations(); 
     }
     
-    // CRÍTICO: Recarrega o conteúdo dinâmico (apenas se for a página de detalhes)
     loadProjectDetail(); 
 }
 
@@ -76,7 +72,7 @@ export function initLanguage() {
         });
     }
     
-    // 3. Inicia o carregamento (que chamará applyTranslations e loadProjectDetail)
+    // 3. Inicia o carregamento 
     changeLanguage(initialLang);
     
 }

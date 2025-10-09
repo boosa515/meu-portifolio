@@ -1,6 +1,6 @@
 // theme.js
 
-import { animateTitles } from './utils.js';
+import { animateTitles } from './utils.js'; // Continua importado, mas não usado.
 
 // VARIÁVEIS DE ESCOPO
 const themeToggle = document.getElementById('theme-toggle');
@@ -57,7 +57,7 @@ function setTheme(theme, isInitialLoad = false) {
     
     if (!isInitialLoad) {
         animateAndSwapImage(isLight);
-        animateTitles(); // Reanima títulos com a nova cor primária
+        // CHAMADA DE ANIMAÇÃO REMOVIDA.
     } else {
         // Carga inicial: apenas define o src correto
         if (heroImage) heroImage.src = isLight ? IMAGE_LIGHT : IMAGE_DARK;

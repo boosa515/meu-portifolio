@@ -1,4 +1,4 @@
-// projectLoader.js
+// projectLoader.js (CORRIGIDO: Duplicação de Projetos)
 
 import { getLocalizedText, applyTranslations } from './i18n.js';
 import { wrapTitleLetters, animateTitles } from './utils.js';
@@ -9,11 +9,18 @@ import { wrapTitleLetters, animateTitles } from './utils.js';
 export function loadProjectGrid() {
     const projectsSection = document.getElementById('projects');
     
-    // Se não for a página inicial, apenas retorna
+    // Se não for a página inicial ou dados indisponíveis, apenas retorna
     if (!projectsSection || typeof projectData === 'undefined') {
         return; 
     }
 
+    // CRÍTICO: Limpa todo o conteúdo ANTERIOR da seção, exceto o título H2 (se existir)
+    const existingTitle = projectsSection.querySelector('h2');
+    projectsSection.innerHTML = ''; // Limpa tudo
+    if (existingTitle) {
+        projectsSection.appendChild(existingTitle); // Adiciona o título H2 de volta
+    }
+    
     let gridContent = `
         <div class="projects-grid">
     `;
@@ -47,36 +54,34 @@ export function loadProjectGrid() {
         </div>
     `;
 
-    // Adiciona o conteúdo do grid APÓS o H2 que já existe no index.html
-    const existingTitle = projectsSection.querySelector('h2');
+    // Adiciona o conteúdo do grid APÓS o H2
     if (existingTitle) {
          existingTitle.insertAdjacentHTML('afterend', gridContent);
     } else {
         projectsSection.innerHTML += gridContent;
     }
     
-    // Re-aplica traduções estáticas para o botão "Click for More"
+    // Re-aplica traduções estáticas para o botão "Click for More" (e qualquer novo elemento data-i18n)
     applyTranslations();
 }
 
 
-// Função original de detalhes do projeto (renomeada e mantida)
+// Função original de detalhes do projeto (restante do código)
 export function loadProjectDetail() {
     const detailSection = document.getElementById('project-detail');
     
     if (!detailSection) {
-        // Se não for a página de detalhes, tenta carregar o grid (página inicial)
+        // Se não for a página de detalhes, carrega o grid (página inicial)
         loadProjectGrid(); 
         return; 
     } 
     
-    // O restante da lógica de loadProjectDetail...
+    // ... (restante da lógica de loadProjectDetail)
     const urlParams = new URLSearchParams(window.location.search);
     let projectId = urlParams.get('id');
     
-    // ... (restante do código que gera o HTML dos detalhes)
-    // Usarei o código da sua última versão para garantir a integridade:
-    
+    // ... (o restante da função loadProjectDetail)
+
     if (!projectId) {
         projectId = '1'; 
     }

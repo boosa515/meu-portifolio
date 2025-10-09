@@ -179,6 +179,11 @@ h1, h2, h3 {
     flex-basis: 55%;
 }
 
+/* Garante que o título use a cor primária (Verde/Roxo) como cor base. */
+.animatable-title {
+    color: var(--primary-color);
+}
+
 .hero-section h1 {
     font-size: 3.5rem;
     margin-bottom: 5px;
@@ -237,6 +242,11 @@ h1, h2, h3 {
 /* 3. SEÇÕES SECUNDÁRIAS */
 .about-section {
     background-color: #151515;
+    text-align: center;
+}
+
+/* CORREÇÃO: Centraliza o título da seção de projetos */
+.projects-section {
     text-align: center;
 }
 
@@ -387,28 +397,8 @@ h1, h2, h3 {
     border-color: var(--primary-color);
 }
 
-/* 6. ANIMAÇÃO DE QUEDA DAS LETRAS (DROP-IN) */
-@keyframes letter-drop-in {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animatable-letter {
-    display: inline-block;
-    color: var(--primary-color) !important; 
-    transition: color 0.3s;
-}
-
-.animate-drop-in {
-    animation: letter-drop-in 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
+/* 6. ANIMAÇÃO DE REVEAL DE TEXTO (REMOVIDA) */
+/* Todos os estilos de animação foram removidos daqui. */
 
 /* 7. ESTILO DO TEMA CLARO E RESPONSIVIDADE */
 body.light-theme .main-header {
