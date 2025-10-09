@@ -21,7 +21,7 @@ export let currentLang = 'pt'; // Idioma padrão
 
 async function fetchTranslations(lang) {
     try {
-        const response = await fetch(`locales/${lang}.json`);  // Faz o download do arquivo JSON do idioma solicitado
+        const response = await fetch(`../locales/${lang}.json`);  // Faz o download do arquivo JSON do idioma solicitado
         if (!response.ok) throw new Error('Translation file not found');  // Caso o arquivo não seja encontrado, lança uma exceção
         translations = await response.json(); // Converte o conteúdo do arquivo JSON para objeto JavaScript
         return true;

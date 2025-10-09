@@ -27,8 +27,8 @@ const scrollProfileImg = document.getElementById('scroll-profile-img');
 // ============================================================================
 
 // Caminhos das imagens do tema escuro e claro
-const IMAGE_DARK = 'Imagens/F1.png';
-const IMAGE_LIGHT = 'Imagens/F2.png';
+const IMAGE_DARK = '../Imagens/F1.png';
+const IMAGE_LIGHT = '../Imagens/F2.png';
 
 // Guarda o ângulo atual de rotação da imagem do hero
 let currentRotation = 0; 
