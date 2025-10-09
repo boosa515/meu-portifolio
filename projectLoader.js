@@ -1,21 +1,81 @@
-// detailLoader.js
+// projectLoader.js
 
 import { getLocalizedText, applyTranslations } from './i18n.js';
 import { wrapTitleLetters, animateTitles } from './utils.js';
 
-// OBS: Este módulo pressupõe que project-data.js foi carregado via <script> tag no HTML 
-// e, portanto, 'projectData' está no escopo global.
+// OBS: Este módulo pressupõe que project-data.js foi carregado no escopo global.
 
+// Função para construir e carregar o grid de projetos na página inicial (index.html)
+export function loadProjectGrid() {
+    const projectsSection = document.getElementById('projects');
+    
+    // Se não for a página inicial, apenas retorna
+    if (!projectsSection || typeof projectData === 'undefined') {
+        return; 
+    }
+
+    let gridContent = `
+        <div class="projects-grid">
+    `;
+
+    // Itera sobre todos os projetos em projectData
+    for (const projectId in projectData) {
+        if (projectData.hasOwnProperty(projectId)) {
+            const project = projectData[projectId];
+            
+            // Usa o título localizado para a prévia
+            const localizedTitle = getLocalizedText(project.title);
+            
+            gridContent += `
+                <div class="project-item">
+                    <a href="project-detail.html?id=${projectId}" class="project-link">
+                        <div class="project-image-wrapper">
+                            <img src="${project.image}" alt="${localizedTitle}">
+                        </div>
+                        <h3>${localizedTitle}</h3>
+                        <p class="project-date">${project.date}</p>
+                    </a>
+                </div>
+            `;
+        }
+    }
+    
+    gridContent += `
+        </div>
+        <div class="more-button-container">
+            <a href="#" class="btn secondary-btn" data-i18n="projects.more">Click for More</a>
+        </div>
+    `;
+
+    // Adiciona o conteúdo do grid APÓS o H2 que já existe no index.html
+    const existingTitle = projectsSection.querySelector('h2');
+    if (existingTitle) {
+         existingTitle.insertAdjacentHTML('afterend', gridContent);
+    } else {
+        projectsSection.innerHTML += gridContent;
+    }
+    
+    // Re-aplica traduções estáticas para o botão "Click for More"
+    applyTranslations();
+}
+
+
+// Função original de detalhes do projeto (renomeada e mantida)
 export function loadProjectDetail() {
     const detailSection = document.getElementById('project-detail');
     
-    // Só executa na página de detalhes
     if (!detailSection) {
+        // Se não for a página de detalhes, tenta carregar o grid (página inicial)
+        loadProjectGrid(); 
         return; 
     } 
-
+    
+    // O restante da lógica de loadProjectDetail...
     const urlParams = new URLSearchParams(window.location.search);
     let projectId = urlParams.get('id');
+    
+    // ... (restante do código que gera o HTML dos detalhes)
+    // Usarei o código da sua última versão para garantir a integridade:
     
     if (!projectId) {
         projectId = '1'; 
@@ -84,5 +144,4 @@ export function loadProjectDetail() {
          wrapTitleLetters(newTitleElement);
          animateTitles();
     }
-    
 }

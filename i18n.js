@@ -1,6 +1,6 @@
 // i18n.js
 
-import { loadProjectDetail } from './detailLoader.js'; // Importa a função do próximo módulo
+import { loadProjectDetail, loadProjectGrid } from './projectLoader.js'; 
 import { animateTitles, wrapTitleLetters } from './utils.js';
 
 // VARIÁVEIS GLOBAIS DE MÓDULO
