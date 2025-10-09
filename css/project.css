@@ -56,7 +56,7 @@
 .project-detail-section .project-content p,
 .project-detail-section .project-content ul {
     font-size: 1.1rem;                   /* Tamanho levemente maior que o padrão */
-    color: #bbb;                       /* Cinza claro — combina com o fundo escuro */
+    color: var(--text-color); /* <<<<< MUDANÇA: AGORA USA A VARIÁVEL DE TEXTO GERAL */
     margin-bottom: 20px;                 /* Espaço inferior */
     text-align: left;                    /* Alinhamento uniforme */
 }
@@ -67,6 +67,7 @@
 }
 
 .project-detail-section .project-content ul li { /* --- ESTILO PERSONALIZADO PARA OS ITENS DA LISTA (✔ Ícone SVG) --- */
+    /* O SVG usa o código da cor primária do tema escuro: #b8e71a */
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23b8e71a"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>') /* Define o ícone da lista (em SVG embutido para não depender de arquivo externo) */
                 no-repeat left center;
     background-size: 16px;           /* Define o tamanho do ícone */
@@ -75,6 +76,7 @@
 }
 
 body.light-theme .project-detail-section .project-content ul li { /* --- VERSÃO PARA O TEMA CLARO --- */
+    /* O SVG usa o código da cor primária do tema claro: #9c1ae7 */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%239c1ae7"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>'); /* Altera a cor do ícone ✔ para combinar com o tema claro */
 }
 

@@ -1,4 +1,18 @@
 /* ===============
+   CARREGAMENTO DE FONTES CUSTOMIZADAS
+   (PREENCHA ESTE BLOCO COM SUA FONTE BBH SANS BOGLE)
+   =============== */
+@font-face {
+    font-family: 'BBH Sans Bogle';
+    src: url('../fonts/bbh-sans-bogle.woff2') format('woff2'),
+         url('../fonts/bbh-sans-bogle.woff') format('woff');
+    font-weight: 400; /* Defina o peso conforme sua fonte */
+    font-style: normal;
+    /* Certifique-se de que os caminhos (../fonts/...) estejam corretos */
+}
+
+
+/* ===============
    GLOBAIS E RESET
    =============== */
 
@@ -9,13 +23,19 @@
     box-sizing: border-box;
 }
 
-:root {                              /* Declaração de variáveis globais (tema escuro por padrão) */
-    --background-color: #0d0d0d;   /* Fundo geral da página */
-    --text-color: #f5f5f5;         /* Cor padrão do texto */
-    --primary-color: #b8e71a;      /* Cor de destaque */
-    --secondary-color: #1a1a1a;    /* Cor secundária usada em seções e cartões */
-    --link-color-dark: #888;       /* Cinza para links e subtítulos */
-    --font-family: 'Inter', sans-serif; /* Fonte global da página */
+:root {                                                   /* Declaração de variáveis globais (tema escuro por padrão) */
+    --background-color: #0d0d0d;                        /* Fundo geral da página */
+    --text-color: #f5f5f5;                              /* Cor padrão do texto */
+    --primary-color: #b8e71a;                           /* Cor de destaque (Verde) */
+    --primary-hover-color: #89b413;                     /* Hover Verde Escuro */
+    --secondary-color: #1a1a1a;                         /* Cor secundária usada em seções e cartões */
+    --about-background-color: #151515;                  /* Fundo da seção Sobre Mim */
+    --about-image-dark: url('../Imagens/about_dark.png'); /* Imagem Tema Escuro */
+    --about-image-light: none;                            /* Imagem Tema Claro */
+    --link-color-dark: #888;                            /* Cinza para links e subtítulos */
+    --font-family: 'Inter', sans-serif;                   /* Fonte global (para o corpo do texto) */
+    --title-font-family: 'BBH Sans Bogle', sans-serif; /* Fonte dos títulos */
+    --hero-subtitle-font: 'Press Start 2P', cursive; /* Fonte para o subtítulo do Hero */
 }
 
 /* ==========
@@ -23,20 +43,25 @@
    ========== */
 
 body.light-theme {
-    --background-color: #f0f0f0;   /* Fundo geral da página */
-    --text-color: #333;            /* Texto escuro */
-    --primary-color: #9c1ae7;      /* Cor de destaque */
-    --secondary-color: #ffffff;    /* Cor secundária usada em seções e cartões */
-    --link-color-dark: #666;       /* Cinza mais escuro para links */
+    --background-color: #f0f0f0;                             /* Fundo geral da página */
+    --text-color: #333;                                   /* Texto escuro */
+    --primary-color: #9c1ae7;                             /* Cor de destaque (Roxo) */
+    --primary-hover-color: #7a0ad3;                       /* Hover Roxo Escuro */
+    --secondary-color: #ffffff;                           /* Cor secundária usada em seções e cartões */
+    --about-background-color: #e8e8e8;
+    --about-image-dark: none;                               /* Imagem Dark é desativada */
+    --about-image-light: url('../Imagens/about_light.png'); /* Imagem Tema Claro */
+    --link-color-dark: #666;                              /* Cinza mais escuro para links */
 }
 
 /* ===============================
    ESTILOS GERAIS DO BODY E SEÇÕES
    ================================ */
+
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: var(--font-family);
+    font-family: var(--font-family); 
     line-height: 1.6;
     transition: background-color 0.3s, color 0.3s; /* Transição suave ao trocar tema */
 }
@@ -50,6 +75,7 @@ section {
 
 h1, h2, h3 {
     line-height: 1.2;
+    font-family: var(--title-font-family); /* Aplica a nova fonte aos títulos */
 }
 
 /* ========================
@@ -213,7 +239,9 @@ h1, h2, h3 {
     font-size: 1.5rem;
     color: var(--primary-color);
     margin-bottom: 20px;
-    font-weight: 400;
+    font-weight: 10;
+    font-family: var(--hero-subtitle-font); /* Aplica a fonte Press Start 2P */
+    
 }
 
 /* Descrição pessoal */
@@ -261,15 +289,61 @@ h1, h2, h3 {
 }
 
 .primary-btn:hover {
-    background-color: #89b413;
+    background-color: var(--primary-hover-color);
 }
 
 /* =======================================
    3. SEÇÕES SECUNDÁRIAS (Sobre, Projetos)
    ======================================= */
 .about-section {
-    background-color: #151515;
+    background-color: var(--about-background-color); /* USA VARIÁVEL */
     text-align: center;
+
+    /* ESTILOS DA IMAGEM DE FUNDO */
+    background-image: var(--about-image-dark); /* Padrão (Tema Escuro) */
+    background-size: cover;                    /* Faz a imagem cubrir a seção toda */
+    background-position: center;               /* Centraliza a imagem */
+    background-repeat: no-repeat;              /* Evita repetição */
+    position: relative;                        /* Necessário para posicionar o pseudo-elemento (overlay) */
+    overflow: hidden;                          /* Garante que nada saia do container */
+}
+
+.about-section::before {                    /* Pseudo-elemento para o TEMA ESCURO: Aplica um OVERLAY escuro semi-transparente SOBRE A IMAGEM DE FUNDO */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.966); /* Opacidade ajustada para 70% */
+    z-index: 1;                             /* Garante que o overlay fique abaixo do texto (z-index: 2) */
+}
+
+body.light-theme .about-section {                   /* TEMA CLARO: Muda a imagem e aplica um overlay CLARO */
+    background-image: var(--about-image-light);
+}
+
+body.light-theme .about-section::before {
+    background-color: rgba(255, 255, 255, 0.966);   /* Opacidade ajustada para 70% */
+}
+
+/* Garante que o conteúdo (texto) esteja acima do overlay */
+.about-section .about-content,
+.about-section .subtitle,
+.about-section .animatable-title,
+.about-section .description {
+    position: relative; 
+    z-index: 2; /* Fica acima do overlay (z-index: 1) */
+}
+
+/* Texto descritivo da seção "Sobre Mim" */
+.about-section .description {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: justify;
+    font-weight: 500; /* Texto mais grosso */
 }
 
 /* Centraliza o conteúdo da seção de projetos */
@@ -277,7 +351,7 @@ h1, h2, h3 {
     text-align: center;
 }
 
-/* Estilo dos títulos das seções */
+/* Estilo dos títulos das seções com underline dinâmico */
 .about-section h2,
 .projects-section h2,
 .contacts-section h2 {
@@ -286,15 +360,10 @@ h1, h2, h3 {
     font-weight: 900;
     color: var(--text-color);
     transition: color 0.3s;
-}
-
-/* Texto descritivo da seção "Sobre Mim" */
-.about-section .description {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: #ffffff;
-    text-align: justify;
+    
+    display: inline-block; /* Faz o bloco ter a largura do texto */
+    border-bottom: 5px solid var(--primary-color); /* Linha grossa com a cor do tema */
+    padding-bottom: 5px; /* Espaço entre o texto e a linha */
 }
 
 /* ====================
@@ -353,7 +422,7 @@ h1, h2, h3 {
 }
 
 .contact-btn:hover {
-    background-color: #89b413;
+    background-color: var(--primary-hover-color);
 }
 
 /* ===================
@@ -451,11 +520,11 @@ body.light-theme .main-header {
 }
 
 body.light-theme .about-section {
-    background-color: #e8e8e8;
+    background-color: var(--about-background-color);
 }
 
 body.light-theme .hero-section p {
-    color: #555;
+    color: var(--link-color-dark); /* Ajusta a descrição do herói no tema claro */
 }
 
 /* Corrige cores do tema claro */
