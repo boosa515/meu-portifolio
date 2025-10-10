@@ -6,7 +6,7 @@
     font-family: 'BBH Sans Bogle';
     src: url('../fonts/bbh-sans-bogle.woff2') format('woff2'),
          url('../fonts/bbh-sans-bogle.woff') format('woff');
-    font-weight: 400; /* Defina o peso conforme sua fonte */
+    font-weight: 300; /* Defina o peso conforme sua fonte */
     font-style: normal;
     /* Certifique-se de que os caminhos (../fonts/...) estejam corretos */
 }
@@ -315,7 +315,7 @@ h1, h2, h3 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.966); /* Opacidade ajustada para 70% */
+    background-color: rgba(0, 0, 0, 0.397); /* Opacidade ajustada para 70% */
     z-index: 1;                             /* Garante que o overlay fique abaixo do texto (z-index: 2) */
 }
 
@@ -324,7 +324,7 @@ body.light-theme .about-section {                   /* TEMA CLARO: Muda a imagem
 }
 
 body.light-theme .about-section::before {
-    background-color: rgba(255, 255, 255, 0.966);   /* Opacidade ajustada para 70% */
+    background-color: rgba(255, 255, 255, 0.432);   /* Opacidade ajustada para 70% */
 }
 
 /* Garante que o conteúdo (texto) esteja acima do overlay */
