@@ -1,114 +1,24 @@
-<!DOCTYPE html> 
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artur Brasileiro | Dev Sênior Flutter & Dart</title>
+    <meta name="description" content="Portfólio de Artur Brasileiro — Engenheiro de Computação e Desenvolvedor Sênior Flutter & Dart." />
+    <meta name="author" content="Artur Brasileiro" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Torna o site responsivo em dispositivos móveis -->
-    <title>Portfólio Gabriel R. Pires</title> <!-- Título que aparece na aba do navegador -->
-    <link rel="stylesheet" href="css/main.css"> <!-- Link para o arquivo principal de estilos CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
+    <meta property="og:title" content="Artur Brasileiro | Dev Sênior Flutter & Dart" />
+    <meta property="og:description" content="Portfólio de Artur Brasileiro — Engenheiro de Computação e Desenvolvedor Sênior Flutter & Dart." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-<body>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
 
-    <div id="scroll-profile" class="scroll-profile hidden">  <!-- Div exibida durante o scroll com imagem do perfil -->
-        <img id="scroll-profile-img" src="Imagens/F1.png" alt="Perfil"> <!-- Imagem de perfil exibida ao rolar -->
-    </div>
-
-    <header class="main-header transparent-header"> <!-- Cabeçalho principal -->
-        
-        <nav class="centered-nav">
-            <ul class="nav-links">
-                <li><a href="#home" data-i18n="nav.home">Home</a></li>
-                <li><a href="#about" data-i18n="nav.about">Sobre Mim</a></li>
-                <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
-                <li><a href="#contatos" data-i18n="nav.contact">Contato</a></li>
-            </ul>
-        </nav>
-
-        <div class="header-controls"> <!-- Área com botões de controle -->
-            <button id="theme-toggle" class="control-btn" title="Mudar Tema"> <!-- Botão para alternar o tema -->
-                <i class="fas fa-sun"></i> <!-- Ícone de sol -->
-            </button>
-
-            <!-- Seletor de idioma -->
-            <div class="language-selector">
-                <select id="language-switcher" class="control-select">
-                    <option value="pt">PT</option>
-                    <option value="en">EN</option>
-                    <option value="zh">ZH</option>
-                    <option value="ja">JA</option>
-                </select>
-            </div>
-        </div>
-    </header>
-
-    <section id="home" class="hero-section">  <!-- Seção inicial (Home / Hero Section) -->
-        <div class="hero-content">
-            <h1 class="animatable-title" data-i18n="hero.subtitle"></h1> <!-- Título principal animado -->
-            <h2 data-i18n="hero.area"></h2>   <!-- Subtítulo destacando a área de interesse -->
-            <p data-i18n="hero.description"></p>  <!-- Descrição curta sobre o propósito do autor -->
-            <a href="#projects" class="btn primary-btn" data-i18n="hero.button"></a>  <!-- Botão que leva à seção de projetos -->
-        </div>
-
-        <div class="hero-image-container">  <!-- Imagem principal do perfil -->
-            <img id="profile-hero-img" src="Imagens/F1.png" alt="Foto de Perfil" class="profile-pic">
-        </div>
-    </section>
-
-    <section id="about" class="about-section"> <!-- Seção "Sobre Mim" -->
-        <div class="about-content">
-            <p class="subtitle" data-i18n="about.peek"></p>  <!-- Subtítulo introdutório -->
-            <h2 class="animatable-title" data-i18n="about.title"></h2>  <!-- Título animado -->
-            <p class="description" data-i18n="about.description"></p> <!-- Texto descritivo sobre o autor -->
-        </div>
-    </section>
-
-    <section id="projects" class="projects-section">  <!-- Seção de Projetos -->
-        <h2 class="animatable-title" data-i18n="projects.title"></h2> <!-- Título animado -->
-    </section>
-
-    <section id="contatos" class="contacts-section">  <!-- Seção de Contato -->
-        <h2 class="animatable-title" data-i18n="contact.title"></h2>  <!-- Título animado -->
-
-        <div class="contacts-grid"> <!-- Grade de opções de contato -->
- 
-            <div class="contact-card"> <!-- Cartão de contato por e-mail -->
-                <i class="fas fa-envelope icon"></i> 
-                <h3 data-i18n="contact.email_header">E-mail</h3>
-                <p data-i18n="contact.email_desc">O jeito mais rápido de falar.</p>
-                <a href="mailto:rezendepiresgabriel@gmail.com?subject=Contato%20Portfólio"
-                   class="contact-btn" data-i18n="contact.email_btn">Enviar Email</a>
-            </div>
-
-            <div class="contact-card">  <!-- Cartão de contato LinkedIn -->
-                <i class="fab fa-linkedin-in icon"></i> 
-                <h3 data-i18n="contact.linkedin_header">LinkedIn</h3>
-                <p data-i18n="contact.linkedin_desc">Conexão profissional e carreira.</p>
-                <a href="https://www.linkedin.com/in/grp-0892ret/"
-                   target="_blank" class="contact-btn" data-i18n="contact.linkedin_btn">Acessar Perfil</a>
-            </div>
-
-            <div class="contact-card"> <!-- Cartão de contato GitHub -->
-                <i class="fab fa-github icon"></i>
-                <h3 data-i18n="contact.github_header">GitHub</h3>
-                <p data-i18n="contact.github_desc">Veja meu código e projetos.</p>
-                <a href="https://github.com/boosa515"
-                   target="_blank" class="contact-btn" data-i18n="contact.github_btn">Ver Repositórios</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer"> <!-- Rodapé principal -->
-        <p data-i18n="footer.copyright">
-            Copyright 2025 © All rights Reserved. Design by Gabriel Rezende Pires
-        </p>
-    </footer>
-
-    <script src="js/project-data.js"></script> <!-- Script que carrega dados dos projetos --> 
-    <script src="js/main.js" type="module"></script> <!-- Script principal com funcionalidades do site -->
-
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
