@@ -1,7 +1,8 @@
+import { useLayoutEffect } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
-import { ArrowLeft, Github, ExternalLink, Star, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowLeft, Github, ExternalLink, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Project {
   title: string;
@@ -30,6 +31,13 @@ const softwareProjects: Project[] = [
 ];
 
 const Software = () => {
+  const navigate = useNavigate();
+
+  // Garante scroll no topo ao abrir
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-500">
       <Navbar />
@@ -41,10 +49,14 @@ const Software = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
+          <button 
+            onClick={() => navigate(-1)} 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 bg-transparent border-none cursor-pointer text-base"
+          >
             <ArrowLeft className="w-4 h-4" />
             Voltar ao Início
-          </Link>
+          </button>
+
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">PROJETOS DE <span className="text-primary">SOFTWARE</span></h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Uma coleção das minhas aplicações mobile, sistemas web e ferramentas digitais.

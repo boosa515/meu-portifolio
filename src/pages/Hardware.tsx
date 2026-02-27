@@ -1,7 +1,8 @@
+import { useLayoutEffect } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { ArrowLeft, Github, ExternalLink, Cpu } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Project {
   title: string;
@@ -12,7 +13,6 @@ interface Project {
   live?: string;
 }
 
-// Preencha com os seus projetos reais de Hardware
 const hardwareProjects: Project[] = [
   {
     title: "Deauther Didático (2.4 e 5GHz)",
@@ -25,6 +25,13 @@ const hardwareProjects: Project[] = [
 ];
 
 const Hardware = () => {
+  const navigate = useNavigate();
+
+  // Garante scroll no topo ao abrir
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-500">
       <Navbar />
@@ -36,10 +43,14 @@ const Hardware = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors mb-8">
+          <button 
+            onClick={() => navigate(-1)} 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors mb-8 bg-transparent border-none cursor-pointer text-base"
+          >
             <ArrowLeft className="w-4 h-4" />
             Voltar ao Início
-          </Link>
+          </button>
+          
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">PROJETOS DE <span className="text-accent">HARDWARE</span></h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Sistemas embarcados, prototipagem, robótica e eletrónica.

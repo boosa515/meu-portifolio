@@ -7,6 +7,11 @@ const ProjectsSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
+  // NOVA FUNÇÃO: Salva a posição exata do scroll ao clicar
+  const handleSaveScroll = () => {
+    sessionStorage.setItem("scroll-position-home", window.scrollY.toString());
+  };
+
   return (
     <section id="projetos" className="section-padding" ref={ref}>
       <div className="max-w-6xl mx-auto">
@@ -39,8 +44,11 @@ const ProjectsSection = () => {
               <p className="text-muted-foreground mb-8">
                 Aplicativos mobile, sistemas web e ferramentas construídas com Flutter, React e outras tecnologias modernas.
               </p>
+              
+              {/* Link atualizado com onClick */}
               <Link
                 to="/software"
+                onClick={handleSaveScroll}
                 className="mt-auto inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
               >
                 Ver Projetos
@@ -63,8 +71,11 @@ const ProjectsSection = () => {
               <p className="text-muted-foreground mb-8">
                 Projetos de engenharia, sistemas embarcados, robótica e prototipagem física.
               </p>
+
+              {/* Link atualizado com onClick */}
               <Link
                 to="/hardware"
+                onClick={handleSaveScroll}
                 className="mt-auto inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors"
               >
                 Ver Projetos
