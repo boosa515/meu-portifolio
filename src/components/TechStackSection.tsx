@@ -23,27 +23,10 @@ const TechStackSection = () => {
 
   return (
     <section id="habilidades" className="py-24 overflow-hidden" ref={ref}>
-      <div className="max-w-6xl mx-auto px-6 mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <p className="font-mono text-sm text-primary mb-3 tracking-wider uppercase">
-            Tech Stack
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            TECNOLOGIAS & FERRAMENTAS
-          </h2>
-        </motion.div>
-      </div>
-
       {/* Marquee */}
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-
         <div className="flex w-max marquee">
           {doubled.map((tech, i) => (
             <div
