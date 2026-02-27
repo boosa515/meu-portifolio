@@ -7,11 +7,6 @@ const ScrollHandler = () => {
 
   // Salva a posição antes de sair da Home
   useEffect(() => {
-    // Se estou saindo da Home (path atual é /), salvo a posição
-    const handleScroll = () => {
-        // Não faz nada, apenas garante que o sessionStorage seja atualizado no unmount
-    };
-    
     // O return do useEffect roda quando o componente desmonta (ao mudar de página)
     return () => {
       if (location.pathname === "/") {
@@ -26,17 +21,26 @@ const ScrollHandler = () => {
       const savedPosition = sessionStorage.getItem("scroll-position-home");
       
       if (savedPosition) {
-        // O segredo: setTimeout garante que a página renderizou antes de rolar
+        // PASSO IMPORTANTE: Desativa temporariamente o scroll-behavior smooth do CSS global
+        // Isso impede que o navegador tente animar a rolagem até a posição salva
+        document.documentElement.style.scrollBehavior = "auto";
+
+        // O setTimeout garante que a página renderizou antes de rolar
         setTimeout(() => {
           window.scrollTo({
             top: parseInt(savedPosition),
-            behavior: "instant" // Importante: instantâneo para não ver a página rolando
+            behavior: "instant" // Força o pulo instantâneo
           });
-        }, 100); // 100ms de atraso para garantir que a animação de entrada já ocupou espaço
+
+          // Reativa a rolagem suave (smooth) um pouco depois, para que as próximas interações voltem ao normal
+          setTimeout(() => {
+            document.documentElement.style.scrollBehavior = "smooth";
+          }, 50);
+          
+        }, 100); // Mantém o atraso de 100ms para sincronizar com a entrada da página
       }
     } else {
-      // Se for qualquer outra página (Projetos) ou navegação normal (clique no menu)
-      // Rola para o topo suavemente ou instantaneamente
+      // Se for qualquer outra página ou navegação normal
       window.scrollTo({
         top: 0,
         behavior: "instant"

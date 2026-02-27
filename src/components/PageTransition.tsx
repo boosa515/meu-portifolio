@@ -17,7 +17,8 @@ const pageVariants = {
     y: 0, 
     scale: 1,
     transition: {
-      duration: 0.4,
+      duration: 0.5,
+      delay: 0.2,
       ease: [0.25, 1, 0.5, 1] // Easing "Cubic Bezier" para suavidade premium
     }
   },
