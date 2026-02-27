@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Smartphone, Code } from "lucide-react";
-import profileImg from "@/assets/profile-avatar.png";
+import { GraduationCap, Smartphone, Code, Globe } from "lucide-react";
+
+// Importe as duas imagens aqui (certifique-se de que os nomes batem com os arquivos na sua pasta)
+import profileImgDark from "@/assets/avatar-escuro.png";
+import profileImgLight from "@/assets/avatar-claro.png";
 
 const AboutSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const stats = [
-    { icon: Code, label: "Linguagens", value: "Flutter & Dart" },
-    { icon: Smartphone, label: "Foco", value: "Mobile" },
+    { icon: Code, label: "Linguagens", value: "typescript & Dart" },
+    { icon: Globe, label: "Foco", value: "Web & Mobile" },
     { icon: GraduationCap, label: "Formação", value: "Eng. Computação" },
   ];
 
@@ -23,25 +26,30 @@ const AboutSection = () => {
           transition={{ duration: 0.7 }}
           className="grid md:grid-cols-2 gap-16 items-center"
         >
-          {/* Image */}
+          {/* Imagens */}
           <div className="flex justify-center">
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden glass neon-border">
+                
+                {/* imagem Modo Escuro */}
                 <img
-                  src={profileImg}
-                  alt="Artur Brasileiro"
-                  className="w-full h-full object-cover"
+                  src={profileImgDark}
+                  alt="Gabriel R. Pires"
+                  className="w-full h-full object-cover block [.light_&]:hidden"
                 />
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-xl bg-primary/10 border border-primary/20 backdrop-blur-sm flex items-center justify-center">
-                <span className="font-mono text-primary text-sm font-bold">
-                  Sr. Dev
-                </span>
+                
+                {/* imagem Modo Claro */}
+                <img
+                  src={profileImgLight}
+                  alt="Gabriel R. Pires"
+                  className="w-full h-full object-cover hidden [.light_&]:block"
+                />
+
               </div>
             </div>
           </div>
 
-          {/* Content */}
+          {/* Conteúdo */}
           <div>
             <p className="font-mono text-sm text-primary mb-3 tracking-wider uppercase">
               Sobre mim
@@ -51,11 +59,7 @@ const AboutSection = () => {
               <span className="gradient-text">experiências digitais</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Sou Engenheiro de Computação apaixonado por desenvolvimento mobile.
-              Com foco em Flutter e Dart, construo aplicações de alto desempenho
-              com interfaces elegantes e código limpo. Minha missão é criar
-              produtos que impactem positivamente a vida das pessoas através da
-              tecnologia.
+              Sou estudante de Engenharia da Computação apaixonado por desenvolvimento web e mobile. Gosto de resolver problemas complexos usando tecnologia. Tenho experiência prática no desenvolvimento de soluções de software e hardware. Buscando aprofundar meus conhecimentos e enfrentar novos desafios inovadores.
             </p>
 
             <div className="grid grid-cols-3 gap-4">

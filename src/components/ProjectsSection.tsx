@@ -1,49 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Star, Sparkles } from "lucide-react";
-
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  featured?: boolean;
-  github?: string;
-  live?: string;
-}
-
-const projects: Project[] = [
-  {
-    title: "KaizenHub",
-    description:
-      "Aplicativo de produtividade completo construído com Flutter. Gestão de tarefas, hábitos e metas com interface intuitiva e gamificação.",
-    tags: ["Flutter", "Dart", "Firebase", "Riverpod"],
-    featured: true,
-    github: "#",
-    live: "#",
-  },
-  {
-    title: "FinTracker",
-    description:
-      "App de controle financeiro pessoal com dashboards interativos, categorização automática e relatórios mensais.",
-    tags: ["Flutter", "Dart", "SQLite"],
-    github: "#",
-  },
-  {
-    title: "DevConnect",
-    description:
-      "Rede social para desenvolvedores com feed de postagens, mensagens em tempo real e sistema de perfil profissional.",
-    tags: ["Flutter", "Firebase", "Cloud Functions"],
-    github: "#",
-  },
-  {
-    title: "WeatherNow",
-    description:
-      "Aplicativo de previsão do tempo com animações climáticas, geolocalização e alertas personalizados.",
-    tags: ["Flutter", "REST API", "Lottie"],
-    github: "#",
-    live: "#",
-  },
-];
+import { Code, Cpu, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProjectsSection = () => {
   const ref = useRef(null);
@@ -59,80 +17,61 @@ const ProjectsSection = () => {
           className="text-center mb-16"
         >
           <p className="font-mono text-sm text-primary mb-3 tracking-wider uppercase">
-            Portfólio
+            MEUS
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Projetos em Destaque
+            PROJETOS
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`glass-hover rounded-2xl p-6 md:p-8 group relative overflow-hidden ${
-                project.featured ? "md:col-span-2" : ""
-              }`}
-            >
-              {project.featured && (
-                <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
-                  <Sparkles className="w-3.5 h-3.5 text-primary" />
-                  <span className="text-xs font-semibold text-primary">Destaque</span>
-                </div>
-              )}
-
-              <div className={project.featured ? "md:max-w-2xl" : ""}>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs font-mono rounded-full bg-secondary text-secondary-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-4">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <Github className="w-4 h-4" />
-                      Código
-                    </a>
-                  )}
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Demo
-                    </a>
-                  )}
-                  {project.featured && (
-                    <div className="flex items-center gap-1 ml-auto text-primary/60">
-                      {[...Array(5)].map((_, j) => (
-                        <Star key={j} className="w-3.5 h-3.5 fill-current" />
-                      ))}
-                    </div>
-                  )}
-                </div>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Card Software */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="glass-hover rounded-2xl p-8 h-full flex flex-col items-center text-center group border-2 border-transparent hover:border-primary/50 transition-all">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Code className="w-8 h-8 text-primary" />
               </div>
-            </motion.div>
-          ))}
+              <h3 className="text-2xl font-bold text-foreground mb-4">Software</h3>
+              <p className="text-muted-foreground mb-8">
+                Aplicativos mobile, sistemas web e ferramentas construídas com Flutter, React e outras tecnologias modernas.
+              </p>
+              <Link
+                to="/software"
+                className="mt-auto inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
+              >
+                Ver Projetos
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Card Hardware */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="glass-hover rounded-2xl p-8 h-full flex flex-col items-center text-center group border-2 border-transparent hover:border-accent/50 transition-all">
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Cpu className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Hardware</h3>
+              <p className="text-muted-foreground mb-8">
+                Projetos de engenharia, sistemas embarcados, robótica e prototipagem física.
+              </p>
+              <Link
+                to="/hardware"
+                className="mt-auto inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors"
+              >
+                Ver Projetos
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

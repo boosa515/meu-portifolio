@@ -1,22 +1,33 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 const socials = [
   {
     icon: Github,
     label: "GitHub",
-    href: "https://github.com/artur-brasileiro",
+    href: "https://github.com/boosa515",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/artur-brasileiro",
+    href: "https://linkedin.com/in/grp-0892ret",
   },
   {
     icon: Mail,
     label: "Email",
-    href: "mailto:contato@arturbrasileiro.dev",
+    href: "mailto:rezendepiresgabriel@gmail.com",
+  },
+  {
+    icon: FaWhatsapp,
+    label: "WhatsApp",
+    href: "https://wa.me/5534993417077?text=Ol%C3%A1%20Gabriel%2C%20tudo%20bem%20%3F",
+  },
+  {
+    icon: FaInstagram,
+    label: "Instagram",
+    href: "https://instagram.com/ga_rpires",
   },
 ];
 
@@ -36,13 +47,9 @@ const ContactSection = () => {
             Contato
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Vamos trabalhar juntos?
+            QUER ENTRAR EM CONTATO?
           </h2>
-          <p className="text-muted-foreground mb-12 max-w-lg mx-auto leading-relaxed">
-            Estou sempre aberto a novos projetos e oportunidades. Sinta-se à
-            vontade para entrar em contato.
-          </p>
-
+          <br/>
           <div className="flex items-center justify-center gap-6">
             {socials.map((s) => (
               <a
@@ -67,7 +74,7 @@ const ContactSection = () => {
           className="mt-24 pt-8 border-t border-border/50"
         >
           <p className="text-sm text-muted-foreground flex items-center justify-center gap-1.5">
-            Feito com <Heart className="w-3.5 h-3.5 text-primary fill-primary" /> por Artur Brasileiro
+            © Gabriel R. Pires 2026
           </p>
         </motion.div>
       </div>

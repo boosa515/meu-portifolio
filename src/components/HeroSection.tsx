@@ -1,97 +1,127 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Send } from "lucide-react";
-import heroBg from "@/assets/hero-bg.png";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
+// --- COMPONENTE DO EFEITO MÁQUINA DE ESCREVER ---
+const TypewriterText = () => {
+  const words = ["Oi, eu sou", "Hello,I am"];
+  const [index, setIndex] = useState(0);
+  // Começamos com o tamanho da primeira palavra para ela já aparecer escrita
+  const [subIndex, setSubIndex] = useState(words[0].length);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [blink, setBlink] = useState(true);
+
+  // Efeito do cursor piscando (o travessão)
+  useEffect(() => {
+    const blinkTimeout = setTimeout(() => setBlink((prev) => !prev), 500);
+    return () => clearTimeout(blinkTimeout);
+  }, [blink]);
+
+  // Lógica de apagar e reescrever
+  useEffect(() => {
+    // Se a palavra inteira foi escrita, pausa antes de começar a apagar
+    if (subIndex === words[index].length + 1 && !isDeleting) {
+      const pauseBeforeDelete = setTimeout(() => setIsDeleting(true), 500);
+      return () => clearTimeout(pauseBeforeDelete);
+    }
+
+    // Se apagou tudo, troca a palavra e começa a escrever
+    if (subIndex === 0 && isDeleting) {
+      setIsDeleting(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
+
+    // Velocidade: apaga mais rápido (80ms) e escreve um pouco mais devagar (120ms)
+    const typeSpeed = isDeleting ? 100 : 120;
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (isDeleting ? -1 : 1));
+    }, typeSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, isDeleting, words]);
+
+  return (
+    <span className="inline-flex items-center">
+      {words[index].substring(0, subIndex)}
+      <span
+        className={`inline-block w-[4px] h-[1em] bg-primary ml-2 transition-opacity duration-100 ${
+          blink ? "opacity-100" : "opacity-0"
+        }`}
+      ></span>
+    </span>
+  );
+};
+
+// --- COMPONENTE PRINCIPAL DA SEÇÃO ---
 const HeroSection = () => {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden"
-      id="hero"
+      id="sobre"
+      className="min-h-screen flex items-center justify-center section-padding relative overflow-hidden pt-20"
     >
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-      </div>
+      {/* Luz de fundo (glow) para dar um charme no design */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-primary/5 blur-[100px] animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-accent/5 blur-[120px] animate-float" style={{ animationDelay: "3s" }} />
-
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto text-center z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-sm text-primary mb-6 tracking-widest uppercase">
-            &lt;Desenvolvedor Sênior /&gt;
+          {/* TÍTULO RESPONSIVO */}
+          {/* flex-col no celular, md:flex-row a partir de tablets */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-center">
+            <span className="block md:inline text-foreground mb-2 md:mb-0 md:mr-4">
+              <TypewriterText />
+            </span>
+            <span className="block md:inline text-primary whitespace-nowrap">
+              Gabriel R. Pires
+            </span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+             Engenheiro de Computação & Fullstack Developer focado em Web. Criando experiências mobile de alto padrão.
           </p>
-        </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6"
-        >
-          Olá, eu sou{" "}
-          <span className="neon-text">Artur Brasileiro</span>
-        </motion.h1>
+          {/* Botões de Ação */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <a
+              href="#projetos"
+              className="w-full sm:w-auto px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all hover:scale-105"
+            >
+              Ver Projetos
+            </a>
+            <a
+              href="#contato"
+              className="w-full sm:w-auto px-8 py-3 rounded-full bg-secondary text-secondary-foreground font-semibold hover:bg-secondary/80 transition-all hover:scale-105 border border-border"
+            >
+              Entrar em Contato
+            </a>
+          </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          Engenheiro de Computação & Desenvolvedor Sênior focado em{" "}
-          <span className="text-primary font-semibold">Flutter</span> e{" "}
-          <span className="text-primary font-semibold">Dart</span>. Criando
-          experiências mobile de alto padrão.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a
-            href="#projetos"
-            className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] hover:scale-105"
-          >
-            Ver Projetos
-            <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
-          </a>
-          <a
-            href="#contato"
-            className="group inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-border text-foreground font-semibold text-sm transition-all duration-300 hover:border-primary/50 hover:text-primary hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.2)]"
-          >
-            Contato
-            <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
+          {/* Redes Sociais */}
+          <div className="flex items-center justify-center gap-6">
+            <a href="https://github.com/boosa515/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110">
+              <Github className="w-6 h-6" />
+            </a>
+            <a href="https://www.linkedin.com/in/grp-0892ret/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110">
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a href="mailto:rezendepiresgabriel@gmail.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110">
+              <Mail className="w-6 h-6" />
+            </a>
+          </div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Ícone de Scroll flutuando em baixo */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground"
       >
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1.5 h-1.5 rounded-full bg-primary"
-          />
-        </div>
+        <ArrowDown className="w-6 h-6 opacity-50" />
       </motion.div>
     </section>
   );
