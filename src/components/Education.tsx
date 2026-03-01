@@ -7,21 +7,21 @@ import CertificateModal from "@/components/CertificateModal";
 // =========================================================
 
 // DIO
-import dioPython from "@/assets/certificates/formacao_pyton_fundamentals_dio.png";
+import dioPython from "@/assets/certificates/fpf_dio.png";
 
 // UDEMY
-import udemyPentest from "@/assets/certificates/pentest_e_hacking_em_sites_udemy.png";
-import udemyWifi from "@/assets/certificates/tecnicas_de_invasão_a_redes_sem_fio_udemy.png";
-import udemyEthical from "@/assets/certificates/fundamentos_de_ethical_hacking_udemy.png";
+import udemyPentest from "@/assets/certificates/pehes_udemy.png";
+import udemyWifi from "@/assets/certificates/tdiarsf_udemy.png";
+import udemyEthical from "@/assets/certificates/fdeh_udemy.png";
 
 // 4LINUX
-import linuxBeginner from "@/assets/certificates/linux_beginner_in_cloud_online_4linux.png";
-import linuxHtml from "@/assets/certificates/mundo_web_com_html5_4linux.png";
-import linuxFund from "@/assets/certificates/linux_fundamentals_4linux.png";
-import linuxDevops from "@/assets/certificates/devops_essentials_4linux.png";
-import linuxBigData from "@/assets/certificates/big_data_essentials_4linux.png";
-import linuxBeginnerDev from "@/assets/certificates/beginners_developer_4linux.png";
-import linuxLogs from "@/assets/certificates/auditoria_de_logs_4linux.png"; 
+import linuxBeginner from "@/assets/certificates/lbico_4linux.png";
+import linuxHtml from "@/assets/certificates/mwch_4linux.png";
+import linuxFund from "@/assets/certificates/lf_4linux.png";
+import linuxDevops from "@/assets/certificates/de_4linux.png";
+import linuxBigData from "@/assets/certificates/bde_4linux.png";
+import linuxBeginnerDev from "@/assets/certificates/bd_4linux.png";
+import linuxLogs from "@/assets/certificates/adl_4linux.png"; 
 
 
 // =========================================================
