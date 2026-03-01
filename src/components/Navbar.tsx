@@ -1,52 +1,119 @@
 import { useState, useEffect } from "react";
-import { Code2, Sun, Moon } from "lucide-react";
+import { Code2, Menu, X } from "lucide-react";
+import { Button } from "./ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  
-  // Lê o tema salvo no navegador (localStorage) para manter em todas as páginas
-  const [isLight, setIsLight] = useState(() => {
-    return localStorage.getItem("theme") === "light";
-  });
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Lógica da cor da barra ao rolar a página
+  const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lógica para aplicar o tema e salvar a escolha do usuário
-  useEffect(() => {
-    if (isLight) {
-      document.documentElement.classList.add("light");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.remove("light");
-      localStorage.setItem("theme", "dark");
+  const navItems = [
+    { name: "Sobre", href: "#sobre" },
+    { name: "Projetos", href: "#projetos" },
+    { name: "Certificações", href: "#educacao" },
+    { name: "Contato", href: "#contato" },
+  ];
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+
+    if (href === "#") {
+      if (location.pathname !== "/") {
+        navigate("/");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
     }
-  }, [isLight]);
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { targetId } });
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass py-3" : "py-6 bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-lg shadow-md"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2 group">
-          <Code2 className="w-6 h-6 text-primary transition-all group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)]" />
-        </a>
-        {/* Lado Direito: Apenas o botão de tema */}
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => setIsLight(!isLight)}
-            className="p-2 text-foreground hover:text-primary transition-colors"
-            title="Alternar Tema"
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* LOGO */}
+          <a
+            href="#"
+            onClick={(e) => handleNavClick(e, "#")}
+            className="flex items-center gap-2 cursor-pointer"
           >
-            {isLight ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-          </button>
+            <Code2 className="w-6 h-6 text-primary" />
+          </a>
+
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+
+          {/* MOBILE BUTTON */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </Button>
         </div>
+
+        {/* MOBILE MENU */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden pb-4 bg-background border-t border-border">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="block py-3 px-4 text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   );

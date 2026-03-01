@@ -1,27 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* =========================
+   🎨 DESIGN SYSTEM (DARK)
+========================= */
 @layer base {
   :root {
-    --background: 220 20% 7%;
+    /* fundo mais escuro */
+    --background: 222 47% 5%;
     --foreground: 210 20% 92%;
 
-    --card: 220 18% 10%;
+    /* cards sólidos */
+    --card: 222 25% 9%;
     --card-foreground: 210 20% 92%;
 
-    --popover: 220 18% 10%;
+    --popover: 222 25% 9%;
     --popover-foreground: 210 20% 92%;
 
     --primary: 170 90% 50%;
     --primary-foreground: 220 20% 7%;
 
-    --secondary: 220 16% 16%;
+    --secondary: 220 16% 14%;
     --secondary-foreground: 210 20% 85%;
 
-    --muted: 220 14% 14%;
+    --muted: 220 14% 12%;
     --muted-foreground: 215 15% 55%;
 
     --accent: 170 90% 50%;
@@ -37,111 +42,157 @@
     --radius: 0.75rem;
 
     --neon: 170 90% 50%;
-    --neon-glow: 170 90% 50%;
     --neon-purple: 260 80% 65%;
 
-    --sidebar-background: 220 18% 10%;
-    --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 170 90% 50%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 14% 14%;
-    --sidebar-accent-foreground: 210 20% 85%;
-    --sidebar-border: 220 16% 18%;
-    --sidebar-ring: 170 90% 50%;
-  }
-  .light {
-    --background: 0 0% 100%; 
-    --foreground: 220 20% 7%; 
-
-    --card: 0 0% 98%;
-    --card-foreground: 220 20% 7%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 7%;
-
-    --primary: 270 70% 50%; 
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 220 20% 7%;
-
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-
-    --accent: 270 70% 50%; 
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 270 70% 50%;
-
-    --neon: 270 70% 50%;
-    --neon-glow: 270 70% 50%;
-    --neon-purple: 320 70% 50%;
+    --shadow-glow: 0 0 40px hsl(170 90% 50% / 0.2);
   }
 }
 
+/* =========================
+   🌍 BASE GLOBAL
+========================= */
 @layer base {
   * {
     @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
+    box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+
+    /* remove qualquer fade lateral */
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+  }
+
+  #root {
+    width: 100%;
+  }
 }
 
+/* =========================
+   🧩 UTILIDADES (IMPORTANTE)
+========================= */
 @layer utilities {
+
+  /* ✅ CARD PADRÃO (SOLIDO) */
+  .card {
+    @apply bg-card border border-border rounded-xl;
+  }
+
+  /* ✅ CARD COM HOVER */
+  .card-hover {
+    @apply bg-card border border-border rounded-xl 
+           transition-all duration-300
+           hover:border-primary/40
+           hover:shadow-[0_0_25px_-5px_hsl(var(--primary)/0.15)];
+  }
+
+  /* ❌ GLASS (AGORA NÃO É TRANSPARENTE) */
   .glass {
-    @apply bg-card/40 backdrop-blur-xl border border-border/50;
+    @apply bg-card border border-border rounded-xl;
   }
 
-  .glass-hover {
-    @apply glass transition-all duration-500 hover:bg-card/60 hover:border-primary/30 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.15)];
-  }
-
-  .neon-text {
-    color: hsl(var(--primary));
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.4), 0 0 40px hsl(var(--primary) / 0.2);
-  }
-
-  .neon-border {
-    box-shadow: 0 0 15px -3px hsl(var(--primary) / 0.3), inset 0 0 15px -8px hsl(var(--primary) / 0.1);
-  }
-
+  /* TEXTO GRADIENTE */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--neon-purple)));
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--neon-purple))
+    );
+  }
+
+  /* TEXTO NEON */
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow:
+      0 0 20px hsl(var(--primary) / 0.4),
+      0 0 40px hsl(var(--primary) / 0.2);
+  }
+
+  /* BORDA NEON */
+  .neon-border {
+    box-shadow:
+      0 0 15px -3px hsl(var(--primary) / 0.3),
+      inset 0 0 15px -8px hsl(var(--primary) / 0.1);
   }
 
   .section-padding {
     @apply px-6 py-24 md:px-12 lg:px-24 xl:px-32;
   }
 
-  .marquee {
-    animation: marquee 25s linear infinite;
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
+}
 
-  .marquee:hover {
-    animation-play-state: paused;
-  }
+/* =========================
+   🔥 BACKGROUND
+========================= */
+
+/* GRID MAIS SUAVE */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.015) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+}
+
+/* GLOW SUAVE */
+.glow-bg {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(16, 185, 129, 0.06),
+    transparent 60%
+  );
+}
+
+/* =========================
+   🎞️ CARROSSEL
+========================= */
+.marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
+/* =========================
+   ✨ ANIMAÇÕES
+========================= */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .animate-float {

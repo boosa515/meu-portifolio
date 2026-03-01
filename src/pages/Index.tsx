@@ -1,33 +1,53 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import TechStackSection from "@/components/TechStackSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import ContactSection from "@/components/ContactSection";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Projects from "@/components/Projects";
+import Education from "@/components/Education";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const location = useLocation();
 
-  // APENAS RESTAURAÇÃO. Não salva nada aqui para evitar bugs.
   useLayoutEffect(() => {
-    const savedPosition = sessionStorage.getItem("scroll-position-home");
+    const stateTarget = location.state && (location.state as { targetId?: string }).targetId;
+    const hashTarget = location.hash ? location.hash.replace("#", "") : null;
     
-    if (savedPosition) {
-      // Restaura imediatamente
-      window.scrollTo(0, parseInt(savedPosition));
+    const targetId = stateTarget || hashTarget;
+
+    if (targetId) {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "instant", block: "start" });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [location]);
 
+  useEffect(() => {
+    const imagesToPreload = [
+      "projeto_espectro.jpg",
+      "projeto_deauther.jpg"
+    ];
+
+    imagesToPreload.forEach((imageName) => {
+      const img = new Image();
+      img.src = `${import.meta.env.BASE_URL}${imageName}`;
+    });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <TechStackSection />
-      <ProjectsSection />
-      <ContactSection />
+      <Hero />
+      <About />
+      <Projects />
+      <Education />
+      <Contact />
+      <Footer />
     </div>
   );
 };
