@@ -31,6 +31,7 @@ const CertificateModal = ({ isOpen, onClose, image, title }: Props) => {
             <img
               src={image}
               alt={title}
+              loading="lazy"
               className="w-full rounded-lg"
             />
 

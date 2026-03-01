@@ -2,6 +2,52 @@ import { GraduationCap } from "lucide-react";
 import { useState } from "react";
 import CertificateModal from "@/components/CertificateModal";
 
+// =========================================================
+// 1. IMPORTAÇÃO DAS IMAGENS (Necessário para o Vite/Deploy)
+// =========================================================
+
+// DIO
+import dioPython from "@/assets/certificates/formacao_pyton_fundamentals_dio.png";
+
+// UDEMY
+import udemyPentest from "@/assets/certificates/pentest_e_hacking_em_sites_udemy.png";
+import udemyWifi from "@/assets/certificates/tecnicas_de_invasão_a_redes_sem_fio_udemy.png";
+import udemyEthical from "@/assets/certificates/fundamentos_de_ethical_hacking_udemy.png";
+
+// 4LINUX
+import linuxBeginner from "@/assets/certificates/linux_beginner_in_cloud_online_4linux.png";
+import linuxHtml from "@/assets/certificates/mundo_web_com_html5_4linux.png";
+import linuxFund from "@/assets/certificates/linux_fundamentals_4linux.png";
+import linuxDevops from "@/assets/certificates/devops_essentials_4linux.png";
+import linuxBigData from "@/assets/certificates/big_data_essentials_4linux.png";
+import linuxBeginnerDev from "@/assets/certificates/beginners_developer_4linux.png";
+import linuxLogs from "@/assets/certificates/auditoria_de_logs_4linux.png"; 
+
+
+// =========================================================
+// 2. LISTAS DE DADOS (Adicione novos aqui no futuro)
+// =========================================================
+
+const dioCerts = [
+  { title: "Formação Python Fundamentals", img: dioPython },
+];
+
+const udemyCerts = [
+  { title: "Pentest e Hacking em Sites", img: udemyPentest },
+  { title: "Técnicas de Invasão WiFi", img: udemyWifi },
+  { title: "Fundamentos de Ethical Hacking", img: udemyEthical },
+];
+
+const fourLinuxCerts = [
+  { title: "Linux Beginner In Cloud", img: linuxBeginner },
+  { title: "Mundo web com HTML5", img: linuxHtml },
+  { title: "Linux Fundamentals", img: linuxFund },
+  { title: "DevOps Essentials", img: linuxDevops },
+  { title: "Big Data Essentials", img: linuxBigData },
+  { title: "Beginners Developer", img: linuxBeginnerDev },
+  { title: "Auditoria de Logs", img: linuxLogs },
+];
+
 const Education = () => {
   const [modal, setModal] = useState({
     open: false,
@@ -16,6 +62,17 @@ const Education = () => {
       title,
     });
   };
+
+  // Pequeno componente para criar o botão (evita repetição de código)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const CertButton = ({ title, img }: { title: string; img: string }) => (
+    <button
+      onClick={() => openCert(img, title)}
+      className="block hover:text-primary text-left w-full transition-colors"
+    >
+      • {title}
+    </button>
+  );
 
   return (
     <section id="educacao" className="py-20">
@@ -43,16 +100,10 @@ const Education = () => {
                 className="h-16 mx-auto mb-6 hover:scale-105 transition"
               />
             </a>
-
             <div className="text-left space-y-2 text-sm">
-
-              <button
-                onClick={() => openCert("src/assets/certificates/formacao_pyton_fundamentals_dio.png", "Formacao Pyton Fundamentals")}
-                className="block hover:text-primary"
-              >
-                • Formacao Pyton Fundamentals
-              </button>
-
+              {dioCerts.map((cert, index) => (
+                <CertButton key={index} title={cert.title} img={cert.img} />
+              ))}
             </div>
           </div>
 
@@ -65,27 +116,10 @@ const Education = () => {
                 className="h-16 mx-auto mb-6 hover:scale-105 transition"
               />
             </a>
-
             <div className="text-left space-y-2 text-sm">
-              <button
-                onClick={() => openCert("src/assets/certificates/pentest_e_hacking_em_sites_udemy.png", "Pentest e Hacking em Sites e Aplicações Web")}
-                className="block hover:text-primary"
-              >
-                • Pentest e Hacking em Sites e Aplicações
-              </button>
-              <button
-                onClick={() => openCert("src/assets/certificates/tecnicas_de_invasão_a_redes_sem_fio_udemy.png", "Tecnicas de Invasão a Redes Sem Fio")}
-                className="block hover:text-primary"
-              >
-                • Tecnicas de Invasão a Redes Sem Fio
-              </button>
-              <button
-                onClick={() => openCert("src/assets/certificates/fundamentos_de_ethical_hacking_udemy.png", "Fundamentos de Ethical Hacking")}
-                className="block hover:text-primary"
-              >
-                • Fundamentos de Ethical Hacking
-              </button>
-
+              {udemyCerts.map((cert, index) => (
+                <CertButton key={index} title={cert.title} img={cert.img} />
+              ))}
             </div>
           </div>
 
@@ -98,71 +132,23 @@ const Education = () => {
                 className="mx-auto mb-6 hover:scale-105 transition h-14 object-contain"
               />
             </a>
-
             <div className="text-left space-y-2 text-sm">
-
-              <button
-                onClick={() => openCert("src/assets/certificates/linux_beginner_in_cloud_online_4linux.png", "Linux Beginner In Cloud")}
-                className="block hover:text-primary"
-              >
-                • Linux Beginner In Cloud
-              </button>
-
-              <button
-                onClick={() => openCert("src/assets/certificates/mundo_web_com_html5_4linux.png", "Mundo web com HTML5")}
-                className="block hover:text-primary"
-              >
-                • Mundo web com HTML5
-              </button>
-              <button
-                onClick={() => openCert("src/assets/certificates/linux_fundamentals_4linux.png", "Linux Fundamentals")}
-                className="block hover:text-primary"
-              >
-                • Linux Fundamentals
-              </button>
-               <button
-                onClick={() => openCert("src/assets/certificates/devops_essentials_4linux.png", "DevOps Essentials")}
-                className="block hover:text-primary"
-              >
-                • DevOps Essentials
-              </button>
-              <button
-                onClick={() => openCert("src/assets/certificates/big_data_essentials_4linux.png", "Big Data Essentials")}
-                className="block hover:text-primary"
-              >
-                • Big Data Essentials
-              </button>
-              <button
-                onClick={() => openCert("src/assets/certificates/beginners_developer_4linux.png", "Beginners Developer")}
-                className="block hover:text-primary"
-              >
-                • Beginners Developer
-              </button>
-              <button
-                onClick={() => openCert("src/assets/certificates/auditoria_de_logs_4linux.png.png", "Auditoria de Logs")}
-                className="block hover:text-primary"
-              >
-                • Auditoria de Logs
-              </button>
-
+              {fourLinuxCerts.map((cert, index) => (
+                <CertButton key={index} title={cert.title} img={cert.img} />
+              ))}
             </div>
           </div>
 
-          {/* ================= FORMAÇÃO ================= */}
+          {/* ================= FORMAÇÃO (Mantido igual) ================= */}
           <div className="md:col-start-2">
             <div className="glass rounded-2xl p-6 text-center h-full flex flex-col">
-
-              {/* TÍTULO */}
               <div className="flex items-center justify-center gap-2 mb-6">
                 <GraduationCap className="w-6 h-6 text-primary" />
                 <h3 className="text-lg font-bold uppercase">
                   FORMAÇÃO
                 </h3>
               </div>
-
-              {/* CONTEÚDO */}
               <div className="text-left space-y-3 text-sm">
-
                 <a
                   href="https://www.uemg.br/ituiutaba"
                   target="_blank"
@@ -170,7 +156,6 @@ const Education = () => {
                 >
                   • Engenharia da Computação - UEMG
                 </a>
-
                 <a
                   href="https://ifgoiano.edu.br/home/index.php/ipameri.html"
                   target="_blank"
@@ -178,9 +163,7 @@ const Education = () => {
                 >
                   • Técnico em Redes de Computadores - IF
                 </a>
-
               </div>
-
             </div>
           </div>
 
