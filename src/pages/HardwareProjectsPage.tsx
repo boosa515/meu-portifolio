@@ -12,9 +12,7 @@ const HardwareProjectsPage = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // Scroll to top is now handled by AnimatePresence in App.tsx
 
   const activeProject = useMemo(
     () => hardwareProjects.find((p) => p.id === activeId) ?? hardwareProjects[0],

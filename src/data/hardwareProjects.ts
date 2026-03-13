@@ -46,6 +46,6 @@ export const hardwareProjects: HardwareProject[] = [
     highlights: ["Uso didático", "Placa customizada", "Design compacto"],
     githubLink: "https://github.com/Artur-Brasileiro/Deauther-5GHz",
     videoSrc: "deauther/video_deauther.mp4",
-    featured: false,
+    featured: true,
   },
 ];

@@ -65,7 +65,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
       <Background />
       {/* CONTEÚDO */}
       <div className="relative z-10 w-full max-w-5xl px-4 text-center">
@@ -132,7 +132,7 @@ const Hero = () => {
       <img 
         src={heroCharacter} 
         alt="Hero Character" 
-        className="floating-character floating-hero w-48 md:w-64 lg:w-80 h-auto" 
+        className="floating-character floating-hero w-40 md:w-56 lg:w-72 h-auto" 
       />
 
     </section>

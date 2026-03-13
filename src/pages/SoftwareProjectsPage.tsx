@@ -9,9 +9,7 @@ const SoftwareProjectsPage = () => {
   const [activeId, setActiveId] = useState(softwareProjects[0]?.id);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // Scroll to top is now handled by AnimatePresence in App.tsx
 
   const activeProject = useMemo(
     () => softwareProjects.find((p) => p.id === activeId) ?? softwareProjects[0],

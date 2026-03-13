@@ -18,13 +18,57 @@
 }
 
 .floating-hero {
-  bottom: 0;
-  right: 5%;
+  bottom: -2%;
+  right: 2%;
 }
 
 .floating-contact {
-  bottom: 0;
-  left: 0;
+  bottom: 5%;
+  left: -2%;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+.animated-border-card {
+  position: relative;
+  border-radius: var(--radius);
+}
+
+.animated-border-card::before,
+.animated-border-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px; /* Espessura da borda animada bem mais fina */
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 20%,
+    transparent 45%,
+    hsl(var(--primary)) 50%,
+    transparent 55%,
+    transparent 80%,
+    hsl(var(--primary)) 100%
+  );
+  animation: spin 4s linear infinite;
+}
+
+.animated-border-card::after {
+  filter: blur(10px);
+  opacity: 0.8;
 }
 
 @media (max-width: 1024px) {

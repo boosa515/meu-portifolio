@@ -33,13 +33,13 @@ const Projects = () => {
     ...hardwareProjects.map(p => ({ ...p, isSoftware: false }))
   ].filter(p => p.featured);
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    align: "start", 
-    skipSnaps: false, 
-    watchDrag: false, 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    skipSnaps: false,
+    watchDrag: false,
     containScroll: "trimSnaps"
   });
-  
+
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
@@ -80,7 +80,7 @@ const Projects = () => {
         </div>
 
         {/* Categories (Rectangles) */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-20">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
           {projectCategories.map((category, index) => (
             <Link to={category.link} key={index} className="block group">
               <Card
@@ -97,8 +97,8 @@ const Projects = () => {
                 <div className="flex items-center gap-6 relative z-10">
                   <div className="relative">
                     <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <category.icon 
-                      className={`w-14 h-14 ${category.color} relative z-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`} 
+                    <category.icon
+                      className={`w-14 h-14 ${category.color} relative z-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
                       strokeWidth={1.5}
                     />
                   </div>
@@ -122,28 +122,27 @@ const Projects = () => {
 
         {/* Featured Projects Carousel */}
         {featuredProjects.length > 0 && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <h3 className="text-center text-3xl font-bold font-display tracking-tight text-foreground/90">Projetos em Destaque</h3>
-            
+          <div className="max-w-6xl mx-auto space-y-4">
+            <h3 className="text-center text-sm font-bold tracking-widest text-white uppercase">DESTAQUES</h3>
             <div className="relative">
               <div className="overflow-hidden pb-10 pt-4 px-4" ref={emblaRef}>
                 <div className="flex -ml-4">
                   {featuredProjects.map((project) => (
-                    <div 
-                      key={project.id} 
+                    <div
+                      key={project.id}
                       className="flex-none w-full sm:w-[50%] lg:w-[33.33%] pl-4 min-w-0"
                     >
                       <div className="flex flex-col items-center">
                         <Link to={project.isSoftware ? "/software" : "/hardware"} className="w-full block">
                           <div className="relative aspect-square w-full rounded-2xl overflow-hidden group cursor-pointer border border-white/5 transition-all duration-300">
-                            <img 
-                              src={`${import.meta.env.BASE_URL}${project.thumbnail}`} 
-                              alt={project.name} 
+                            <img
+                              src={`${import.meta.env.BASE_URL}${project.thumbnail}`}
+                              alt={project.name}
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
                         </Link>
-                        
+
                         {/* Informações embaixo da imagem (Sempre visíveis) */}
                         <div className="mt-5 text-center px-2">
                           <Link to={project.isSoftware ? "/software" : "/hardware"} className="hover:text-primary transition-colors">
@@ -166,9 +165,9 @@ const Projects = () => {
 
               {/* Carousel Navigation Buttons */}
               <div className="absolute top-[35%] -left-4 md:-left-12 -translate-y-1/2 z-20">
-                <Button 
-                  variant="outline" 
-                  size="icon" 
+                <Button
+                  variant="outline"
+                  size="icon"
                   className={`w-12 h-12 rounded-full bg-background/50 backdrop-blur-xl border-white/10 transition-all duration-300 shadow-xl ${canScrollPrev ? 'text-primary border-primary/50 hover:bg-primary hover:text-primary-foreground' : 'opacity-50 cursor-not-allowed'}`}
                   onClick={scrollPrev}
                   disabled={!canScrollPrev}
@@ -176,11 +175,11 @@ const Projects = () => {
                   <ChevronLeft className="w-6 h-6" />
                 </Button>
               </div>
-              
+
               <div className="absolute top-[35%] -right-4 md:-right-12 -translate-y-1/2 z-20">
-                <Button 
-                  variant="outline" 
-                  size="icon" 
+                <Button
+                  variant="outline"
+                  size="icon"
                   className={`w-12 h-12 rounded-full bg-background/50 backdrop-blur-xl border-white/10 transition-all duration-300 shadow-xl ${canScrollNext ? 'text-primary border-primary/50 hover:bg-primary hover:text-primary-foreground' : 'opacity-50 cursor-not-allowed'}`}
                   onClick={scrollNext}
                   disabled={!canScrollNext}

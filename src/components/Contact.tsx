@@ -73,7 +73,7 @@ const Contact = () => {
       <img 
         src={contactCharacter} 
         alt="Contact Character" 
-        className="floating-character floating-contact w-48 md:w-64 lg:w-80 h-auto" 
+        className="floating-character floating-contact w-56 md:w-72 lg:w-96 xl:w-[28rem] h-auto" 
       />
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -103,8 +103,9 @@ const Contact = () => {
           </div>
 
           {/* Cartão de Enviar Mensagem (Centralizado e Sólido) */}
-          <Card className="w-full p-8 !bg-[#121212] !bg-opacity-100 !backdrop-blur-none border-border shadow-2xl">
-            <h3 className="text-2xl font-bold mb-6 text-center">Envie uma Mensagem</h3>
+          <div className="w-full relative z-10 p-[2px] rounded-xl overflow-visible animated-border-card group mb-10">
+            <Card className="w-full relative h-full p-8 !bg-[#121212] !bg-opacity-100 !backdrop-blur-none border-border shadow-2xl rounded-xl z-10">
+              <h3 className="text-2xl font-bold mb-6 text-center">Envie uma Mensagem</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>
@@ -164,6 +165,7 @@ const Contact = () => {
               )}
             </form>
           </Card>
+        </div>
         </div>
       </div>
 

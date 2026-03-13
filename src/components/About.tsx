@@ -24,6 +24,7 @@ const techs = [
   { name: "Raspberry Pi", icon: "https://raw.githubusercontent.com/devicons/devicon/54cfe13ac10eaa1ef817a343ab0a9437eb3c2e08/icons/raspberrypi/raspberrypi-plain.svg" },
   { name: "Unity", icon: "https://raw.githubusercontent.com/devicons/devicon/54cfe13ac10eaa1ef817a343ab0a9437eb3c2e08/icons/unity/unity-plain.svg" },
   { name: "Cisco", icon: "https://translatorswithoutborders.org/wp-content/uploads/2021/12/Cisco-logo.png" },
+  { name: "EasyEDA", icon: "https://i0.wp.com/arduinofactory.com/wp-content/uploads/2024/09/easyeda_logo.png?w=1024&ssl=1" },
 ];
 
 const AboutSection = () => {
@@ -53,9 +54,9 @@ const AboutSection = () => {
           </div>
 
           <div className="text-center md:text-left">
-            <p className="font-mono text-sm text-primary mb-3 uppercase tracking-wider">Sobre mim</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Transformando ideias em <span className="gradient-text">experiências digitais</span>
+            <p className="font-mono text-sm text-primary mb-3 uppercase tracking-wider text-center">Sobre mim</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 font-display tracking-tighter drop-shadow-sm uppercase text-center">
+              TRANSFORMANDO IDEIAS
             </h2>
             <div className="text-white leading-relaxed mb-8 text-justify space-y-4">
               <p>
@@ -81,7 +82,7 @@ const AboutSection = () => {
         </motion.div>
 
         {/* TECNOLOGIAS E FERRAMENTAS (ESTÁTICO) */}
-        <div className="mt-24 flex flex-col items-center">
+        <div className="mt-32 md:mt-40 flex flex-col items-center">
           <p className="font-mono text-sm text-primary mb-10 uppercase tracking-wider">Tecnologias e Ferramentas</p>
           <div className="flex flex-wrap justify-center gap-6 max-w-[850px] mx-auto">
             {techs.map((tech, i) => (
